@@ -1,0 +1,128 @@
+/* styles.css */
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/* General Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    background: linear-gradient(to right, #eef2f3, #dfe9f3);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 40px;
+    background: white;
+    width: 50%;
+    margin: 60px auto;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+.container:hover {
+    box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+h1, h2, h3 {
+    color: #222;
+}
+
+/* Button Styling */
+button {
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    background: linear-gradient(to right, #0066ff, #0044cc);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+}
+button:hover {
+    background: linear-gradient(to right, #0044cc, #0033aa);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Form Inputs */
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-group {
+    width: 90%;
+    margin: auto;
+    text-align: left;
+}
+
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.3s;
+    box-sizing: border-box;
+}
+input[type="email"]:focus, input[type="password"]:focus {
+    border-color: #0066ff;
+    box-shadow: 0px 0px 10px rgba(0, 102, 255, 0.3);
+    outline: none;
+}
+
+/* Password Container */
+.password-container {
+    position: relative;
+    width: 100%;
+}
+.password-container input {
+    width: 100%;
+    padding-right: 40px;
+    height: 44px;
+    box-sizing: border-box;
+}
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Preformatted Code Blocks */
+pre {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .container {
+        width: 80%;
+    }
+    button {
+        width: 100%;
+    }
+    .form-group {
+        width: 100%;
+    }
+    input[type="email"], input[type="password"] {
+        width: 100%;
+    }
+}
