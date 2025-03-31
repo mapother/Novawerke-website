@@ -4,7 +4,8 @@ const approvedUsers = [
     "csnelli1@jh.edu", "ctighe4@jh.edu", "ltesta1@jh.edu",
     "lmirele2@jh.edu", "michelevanzaldua@gmail.com", "snellingstephen91@gmail.com",
     "nburton8@jh.edu", "rchin7@jh.edu", "sstein28@jh.edu",
-    "mtorre44@jh.edu", "mattwalter35@gmail.com"
+    "mtorre44@jh.edu", "mattwalter35@gmail.com",
+    "pranesh.k2213@gmail.com"
 ];
 
 let users = JSON.parse(localStorage.getItem("users")) || {};
