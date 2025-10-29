@@ -1,94 +1,236 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Magic Glove™ | Novawerke AI</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Novawerke AI — The Magic Glove™</title>
+  <meta name="description" content="The Magic Glove™ translates your swing into real-time coaching with modular, edge-based AI. Join the first 100 Founding Members.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <!-- Open Graph (LinkedIn, FB, Slack, etc) -->
+  <meta property="og:title" content="Novawerke AI — The Magic Glove™">
+  <meta property="og:description" content="The Magic Glove™ translates your swing into real-time coaching with modular, edge-based AI. Join the first 100 Founding Members.">
+  <meta property="og:image" content="https://novawerke.ai/img/golfer-hero.png">
+  <meta property="og:url" content="https://novawerke.ai">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter (X) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Novawerke AI — The Magic Glove™">
+  <meta name="twitter:description" content="AI-powered coaching, starting with golf. Be among the first 100 Founding Members.">
+  <meta name="twitter:image" content="https://novawerke.ai/img/golfer-hero.png">
+
+  
   <style>
-    body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background: #fff; color: #111; }
-    nav { background: #1a1a1a; text-align: center; padding: 0.75rem 0; }
-    nav a { color: white; margin: 0 1rem; text-decoration: none; font-weight: 600; }
-    nav a:hover { text-decoration: underline; }
-    header { background: #3c3c3c; color: white; padding: 4rem 2rem; text-align: center; }
-    header h1 { font-size: 2.25rem; margin-bottom: 1rem; }
-    header p { font-size: 1.2rem; margin-bottom: 1.5rem; max-width: 700px; margin-left: auto; margin-right: auto; }
-    section { padding: 3rem 2rem; max-width: 900px; margin: 0 auto; }
-    h2 { font-size: 1.75rem; color: #222; margin-bottom: 1rem; }
-    ul { list-style: disc; padding-left: 1.5rem; }
-    li { margin-bottom: 0.75rem; }
-    a.cta { display: inline-block; margin-top: 1rem; background: #4e9af1; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; }
-    footer { text-align: center; font-size: 0.9rem; padding: 2rem; color: #777; }
+    :root{
+      --bg:#0b1020;        /* deep navy */
+      --ink:#e7ecf7;       /* near-white */
+      --muted:#a9b4d0;     /* cool gray */
+      --brand:#4ea8ff;     /* electric blue */
+      --brand-2:#7c3aed;   /* violet accent */
+      --accent:#22c55e;    /* sport green */
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1100px,92vw);margin:0 auto}
+    /* Hero */
+    .hero{
+      position:relative;
+      min-height:92vh;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      isolation:isolate;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background:linear-gradient(105deg, rgba(11,16,32,.85) 0%, rgba(11,16,32,.45) 45%, rgba(11,16,32,.85) 100%);
+      z-index:1;
+    }
+    .hero img{
+      position:absolute; inset:0;
+      width:100%; height:100%; object-fit:cover; object-position:center right;
+      filter:saturate(1.15) contrast(1.05);
+      transform:scale(1.05);
+      will-change:transform;
+    }
+    .hero-content{position:relative; z-index:2; text-align:left; padding:8rem 0 6rem}
+    .eyebrow{letter-spacing:.2em; text-transform:uppercase; color:var(--muted); font-weight:600; font-size:.85rem}
+    h1{font-size:clamp(2.2rem,5vw,4rem); line-height:1.05; margin:.6rem 0 1rem; font-weight:800}
+    .lead{font-size:clamp(1.05rem,2.2vw,1.35rem); color:#d7def1; max-width:42rem}
+    .cta-row{display:flex; gap:.75rem; margin-top:1.25rem; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; gap:.5rem; padding:.9rem 1.15rem;
+      border-radius:14px; font-weight:700; border:1px solid transparent; cursor:pointer;
+      transition:transform .08s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+      will-change:transform;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      box-shadow:0 10px 30px rgba(78,168,255,.28);
+    }
+    .btn-primary:hover{transform:translateY(-1px); box-shadow:0 16px 40px rgba(124,58,237,.35)}
+    .btn-ghost{border-color:#2a3355; color:#c6d1ee; background:rgba(255,255,255,.02)}
+    .btn-ghost:hover{background:rgba(255,255,255,.06)}
+    .kickers{display:flex; gap:1rem; margin-top:1.1rem; color:var(--muted); font-size:.95rem; flex-wrap:wrap}
+    .kickers span{display:inline-flex; align-items:center; gap:.45rem}
+    .dot{width:.38rem; height:.38rem; background:var(--accent); border-radius:50%}
+    /* Sections */
+    section{padding:4.5rem 0; border-top:1px solid #151b32}
+    h2{font-size:clamp(1.6rem,3.2vw,2.2rem); margin:0 0 1rem; font-weight:800}
+    p{color:#cbd4ee}
+    .grid-3{display:grid; gap:1.3rem; grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border:1px solid #24304f; border-radius:18px; padding:1.25rem 1.15rem; min-height:180px;
+    }
+    .card h3{margin:.2rem 0 .5rem; font-size:1.1rem}
+    .badge{font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; color:#93a3c7}
+    /* Founders box */
+    .founders{
+      display:grid; gap:1.4rem; grid-template-columns: 1.2fr .8fr; align-items:center;
+      background:radial-gradient(1000px 600px at 100% 0%, rgba(124,58,237,.20), transparent 60%),
+                 linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border:1px solid #2b3557; border-radius:22px; padding:1.4rem 1.4rem 1.6rem;
+    }
+    @media (max-width:860px){ .founders{grid-template-columns:1fr} }
+    form{display:flex; gap:.6rem; flex-wrap:wrap}
+    input[type="email"], input[type="text"]{
+      background:#0e1530; border:1px solid #263154; color:#eaf0ff;
+      padding:.9rem 1rem; border-radius:12px; width:min(300px, 100%);
+    }
+    footer{padding:3rem 0; color:#8fa1c8; font-size:.9rem}
+    .link{color:#cfe0ff; text-decoration:underline}
+    /* subtle fade in */
+    .fade-in{opacity:0; transform:translateY(10px); animation:fade .6s ease forwards}
+    .fade-in.d2{animation-delay:.1s} .d3{animation-delay:.2s} .d4{animation-delay:.3s}
+    @keyframes fade{to{opacity:1; transform:none}}
   </style>
 </head>
 <body>
-  <nav>
-    <a href="/index.html">Home</a>
-    <a href="/agentics.html">Agentics Consulting</a>
-    <a href="/nelson.html">NELSON<sup>™</sup></a>
-    <a href="/magic-glove.html">The Magic Glove<sup>™</sup></a>
-  </nav>
 
-  <header>
-    <h1>The Magic Glove<sup>™</sup> – Grip Meets AI</h1>
-    <p>Track your grip. Decode your wrist. Fix your slice. <br>The Magic Glove™ uses real-time AI and sensor fusion to uncover the root cause of your swing flaws—starting with your hands.</p>
+  <!-- HERO -->
+  <header class="hero">
+    <img src="img/golfer-swing.png" alt="Abstract polygon golfer swinging a driver">
+    <div class="container hero-content">
+      <div class="eyebrow fade-in">The Magic Glove™</div>
+      <h1 class="fade-in d2">Reinventing Golf Training with AI</h1>
+      <p class="lead fade-in d3">
+        The Magic Glove™ translates your swing into real-time coaching.
+        Modular, edge-based AI turns grip + wrist data into instant, personal feedback.
+      </p>
+      <div class="cta-row fade-in d4">
+        <a href="#founders" class="btn btn-primary">Join the Founding Members List</a>
+        <a href="#how" class="btn btn-ghost">How it Works</a>
+      </div>
+      <div class="kickers fade-in d4">
+        <span><span class="dot"></span> First 100 members get lifetime perks</span>
+        <span><span class="dot"></span> Early access & private updates</span>
+        <span><span class="dot"></span> Golf is just the beginning</span>
+      </div>
+    </div>
   </header>
 
-  <section>
-    <h2>The Premise</h2>
-    <p>What if your glove could coach you? The Magic Glove<sup>™</sup> blends biometrics and AI to help golfers train more effectively. It captures grip pressure, hand position, and wrist angles—then compares them to a pro baseline to guide improvement.</p>
-    <a href="/magic-glove-1pager.pdf" class="cta">📄 Download 1-Pager PDF</a>
+  <!-- VISION -->
+  <section id="vision">
+    <div class="container">
+      <h2>More than a glove. A new way to learn.</h2>
+      <p style="max-width: 60ch;">
+        Novawerke builds modular, edge-based AI brains that enhance human performance.
+        Golf is our proving ground — and The Magic Glove™ is where it begins.
+        We combine embedded sensing, on-device intelligence, and voice-ready feedback to
+        turn “what just happened?” into “I know exactly what to do next.”
+      </p>
+      <div class="grid-3" style="margin-top:1.2rem;">
+        <div class="card"><div class="badge">Sensors</div><h3>Grip + Motion</h3><p>Track grip pressure, hand angle, and wrist rotation from your glove in real time.</p></div>
+        <div class="card"><div class="badge">AI Coaching</div><h3>On-device intelligence</h3><p>Edge models analyze signals locally for instant, low-latency insights.</p></div>
+        <div class="card"><div class="badge">Growth</div><h3>Adapts to you</h3><p>Baseline comparisons vs. pro data + learning that evolves with your swing.</p></div>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Why I Built This</h2>
-    <p>I built the Magic Glove because I was tired of slicing the ball and not knowing why. Lessons didn’t help. Gadgets didn’t explain. Coaches said ‘release earlier,’ but couldn’t show me what my wrist was actually doing. So I started building a tool that could. Magic Glove was born out of that frustration—and a belief that data, done right, can give every golfer the feedback they deserve.</p>
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="container">
+      <h2>How it Works</h2>
+      <p class="">From your swing to instant feedback — in milliseconds.</p>
+      <div class="grid-3" style="margin-top:1.2rem;">
+        <div class="card"><div class="badge">1</div><h3>Swing Input</h3><p>Natural motion — nothing to “do.” Just swing.</p></div>
+        <div class="card"><div class="badge">2</div><h3>Sensor Capture</h3><p>Embedded sensors capture grip pressure + wrist kinematics.</p></div>
+        <div class="card"><div class="badge">3</div><h3>Signal Processing</h3><p>Noise reduction and feature extraction on-device.</p></div>
+        <div class="card"><div class="badge">4</div><h3>AI Analysis</h3><p>Edge models compare to pro baselines and your history.</p></div>
+        <div class="card"><div class="badge">5</div><h3>Coaching Feedback</h3><p>Clear guidance to correct the miss — via app, voice, or PDF.</p></div>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Who It’s For</h2>
-    <ul>
-      <li>Coaches working with students</li>
-      <li>Amateurs looking for data-backed self-improvement</li>
-      <li>Seniors recovering or relearning form</li>
-      <li>Youth learning proper grip fundamentals early</li>
-    </ul>
+  <!-- FOUNDING MEMBERS -->
+  <section id="founders">
+    <div class="container">
+      <div class="founders">
+        <div>
+          <h2>Be one of the first 100</h2>
+          <p style="max-width:60ch;">
+            We’re inviting early golfers to help shape The Magic Glove™.
+            Founding Members receive early access, lifetime perks, a private update channel,
+            and a real voice in the product’s evolution.
+          </p>
+          <form method="post" action="https://formspree.io/f/mrbypgrq">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Email address" required>
+            <button class="btn btn-primary" type="submit">Join the List</button>
+          </form>
+          <p style="color:#9fb0d7; font-size:.9rem; margin-top:.6rem;">
+            No spam. You can opt out anytime. We’ll only email you about Magic Glove updates.
+          </p>
+        </div>
+        <div class="card">
+          <div class="badge">Why Join</div>
+          <h3>Real influence, real perks</h3>
+          <ul style="margin:.3rem 0 0 1rem; line-height:1.6">
+            <li>Early product access + private builds</li>
+            <li>Lifetime Founding Member pricing</li>
+            <li>Direct feedback sessions with the team</li>
+            <li>Limited-run Founding Member gear</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Key Features</h2>
-    <ul>
-      <li>Lightweight, wireless glove with integrated sensors</li>
-      <li>Tracks grip pressure, hand angle, and wrist rotation</li>
-      <li>Baseline comparisons from PGA pro grip data</li>
-      <li>Feedback via app, voice, or downloadable PDF</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Status & Development</h2>
-    <p>The prototype is currently in design and validation phase. We’re gathering training data with partner coaches and beginning sensor integration work. We're actively seeking collaborators in biomechanics, AI modeling, and wearable hardware.</p>
-  </section>
-
-  <section>
-    <h2>Get Involved</h2>
-    <p>If you're excited about wearables, biomechanics, or AI in sports—we want to connect. Help us build the future of grip intelligence.</p>
-    <a href="/contact.html" class="cta">Contact Us</a>
-  </section>
-
-  <section>
-    <h2>Our Mission</h2>
-    <p>The slice is one of golf’s most common—and least understood—flaws. Magic Glove is the first intelligent golf glove that tracks your wrist motion, grip pressure, and hand position using embedded sensors and AI. We believe every golfer deserves to know what their hands are really doing—and how to fix it.</p>
-  </section>
-
-  <section>
-    <h2>Watch the Pitch</h2>
-    <p>Our 60-second video introduces why this glove matters, what it does, and how it helps golfers at every level. Coming soon.</p>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2>About Novawerke</h2>
+      <p style="max-width: 65ch;">
+        Novawerke is an AI factory — designing modular AI brains that merge human performance
+        with machine precision. The Magic Glove™ is our flagship showcase product, proving what’s possible.
+        From sports to wellness, we’re building systems that think with purpose.
+      </p>
+    </div>
   </section>
 
   <footer>
-    © 2025 Novawerke AI. All rights reserved. | <a href="/contact.html">Contact Us</a>
+    <div class="container">
+      © 2025 Novawerke AI · <a class="link" href="mailto:hello@novawerke.ai">hello@novawerke.ai</a> ·
+      <a class="link" href="/magic-glove.html">Details</a> · <a class="link" href="/nelson.html">NELSON™</a>
+    </div>
   </footer>
+
+  <!-- Smooth scroll (tiny, no deps) -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id=a.getAttribute('href'); const el=document.querySelector(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+      });
+    });
+  </script>
 </body>
 </html>
+
+
+
 
