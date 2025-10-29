@@ -1,0 +1,129 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.webgl {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    outline: none;
+}
+
+.review-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px;
+    color: black;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    background-color: coral;
+    text-decoration: none;
+}
+
+.review-btn:hover {
+  border: black ;
+}
+
+
+.help-text {
+    position: absolute;
+    display: block;
+    bottom: 30px;
+    left: 30px;
+    color: coral;
+    font-size: larger;
+    font-weight: 700;
+}
+
+.loading-screen {
+    position: absolute;
+    display: flex;
+    left: 0;
+    top: 0;
+    width: 100dvw;
+    height: 100dvh;
+    z-index: 10;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-gif {
+    width: 350px;
+}
+
+button {
+    appearance: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+
+.start-btn {
+    display: None;
+    isolation: isolate;
+    color: #000;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 500;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 48px;
+    border-radius: 9999rem;
+    background: transparent;
+    position: relative;
+    
+    & > .btn-back {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid rgb(255, 154, 72);
+      border-radius: inherit;
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: -1;
+      
+      &::before {
+        content: "";
+        width: 0;
+        height: auto;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: rgb(255, 154, 72);
+        position: absolute;
+      }
+    }
+    
+    &:hover {
+      color: white;
+      
+      & > .btn-back  {
+        transform: scale(95%);
+        
+        &::before {
+          width: 120%;
+        }
+      }
+    }
+    
+    &:active {
+      & > .btn-back  {
+        transform: scale(90%);
+      }
+    }
+  }
+  
+
+/*# sourceMappingURL=index.css.map*/
