@@ -430,6 +430,28 @@ body.magic-glove::before {
     0 0 10px rgba(255, 26, 26, 0.7);
 }
 
+/* --- Base reset --- */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+* { box-sizing: border-box; }
+
+/* If your header is fixed or sticky, make sure it stays flush */
+.site-header {
+  position: sticky;    /* or 'fixed' if you prefer */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,.6); /* optional, prevents bleed-through under header */
+  margin: 0;
+}
+
+/* Prevent inline-image baseline gap from adding phantom pixels */
+.site-header img {
+  display: block;
+}
 
 
 
