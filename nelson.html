@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NELSON™ – Intelligent Golf Caddy | Novawerke AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Page-scope styles to mirror Magic Glove behavior, but for .nelson -->
+  <style>
+    /* Full-bleed photo background for Nelson */
+    body.nelson{
+      background: #111 url("img/NELSON Screenshot.png") center top no-repeat fixed;
+      background-size: 50%;  /* half-size image */
+    }
+
+    /* slightly stronger veil than global for readability on bright areas */
+    body.nelson::after{ background:rgba(0,0,0,.18); }
+
+    /* Translucent content panels (same look as magic-glove panels) */
+    .nelson .panel{
+      background:rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:20px;
+      padding:1.5rem;
+      backdrop-filter:blur(2px);
+      margin-left:auto; margin-right:auto; max-width:1100px; padding-left:2rem; padding-right:2rem;
+    }
+
+    /* Make section text readable over the photo */
+    .nelson main section h2,
+    .nelson main section p,
+    .nelson main section li { color:#fff; text-shadow:0 1px 8px rgba(0,0,0,.35); }
+
+    /* Use the existing .hero aesthetic for the top block */
+    .nelson .hero{ padding:48px 0; }
+    .nelson .hero h1{ margin:0 0 .5rem 0; }
+    .nelson .hero .lede{ max-width:70ch; margin:0 auto; }
+  </style>
+</head>
+
+<body class="nelson">
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <img src="img/Novawerke AI Logo.png" alt="Novawerke AI Logo" style="height:48px;width:auto;">
+      </a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="AIGTI.html">Gov AI Consulting</a>
+        <a href="magic-glove.html">Magic Glove™</a>
+        <a class="active" href="nelson.html">NELSON™</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Top hero using the global .hero style -->
+    <section class="hero">
+      <div class="wrap">
+        <h1>NELSON<sup>™</sup> — The Intelligent Golf Caddy</h1>
+        <p class="lede">A voice-powered, emotionally aware robotic companion that learns from the golfer over time—built for real-time interaction and meaningful performance feedback.</p>
+      </div>
+    </section>
+
+    <!-- All content below uses translucent panels for readability -->
+    <section class="panel">
+      <div class="container">
+        <h2>The Concept</h2>
+        <p>NELSON<sup>™</sup> is more than a golf caddy—it’s an intelligent AI-powered assistant designed to help players make better decisions, feel supported, and stay focused on the course. It recommends clubs, analyzes performance, and offers real-time guidance—all tailored to each user over time.</p>
+        <div class="cta-row">
+          <a href="/nelson-1pager.pdf" class="btn secondary">📄 Download 1-Pager PDF</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="container">
+        <h2>Why It Matters</h2>
+        <ul>
+          <li>Real-time interaction via voice and gesture</li>
+          <li>Learns your play style, habits, and preferences</li>
+          <li>Low-latency, edge-based responsiveness</li>
+          <li>Designed with accessibility in mind—ideal for older and differently abled players</li>
+          <li>Modular build makes transport and maintenance easy</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="container">
+        <h2>Technology at Work</h2>
+        <ul>
+          <li>Conversational AI interface (natural voice dialogue)</li>
+          <li>Sensor fusion for club selection and motion tracking</li>
+          <li>Onboard vision system for swing and stance feedback</li>
+          <li>Memory module to adapt recommendations over time</li>
+          <li>Path planning and terrain-aware navigation</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="container">
+        <h2>Why We Built This</h2>
+        <p>Golf can be mentally taxing and technically unforgiving. NELSON was born out of a desire to create an AI companion that doesn’t just carry clubs—but supports the player emotionally, tactically, and mentally. Inspired by the future of robotics and the quiet frustrations of solo rounds, we built NELSON to be more than a robot—an understanding teammate on the course.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="container">
+        <h2>Current Status</h2>
+        <p>NELSON<sup>™</sup> is in early-stage prototyping. The hardware frame is being developed in Fusion 360, while software components for voice, memory, and emotion recognition are underway. We're actively building partnerships with engineers, students, and early testers.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="container">
+        <h2>Get Involved</h2>
+        <p>If you’re passionate about AI, robotics, golf, or human-centered design, we’d love to hear from you. Help shape the future of AI-powered assistance in sports and beyond.</p>
+        <div class="cta-row">
+          <a href="contact.html" class="btn btn-primary">Contact Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="y"></span> Novawerke AI. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
+
+
+

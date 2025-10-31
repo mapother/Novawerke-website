@@ -25,24 +25,92 @@
   <meta name="twitter:creator" content="@NovawerkeAI" />
 
   <link rel="stylesheet" href="styles.css?v=2">
+  <style>
+  /* Only affects the h2 headings inside the "problem" section */
+  #problem h2 {
+    color: navy;
+  }
+
+  <style>
+    .mission-brand {
+      font-size: 3rem !important; /* doubled for emphasis */
+    }
+  </style>
+</style>
+
+<!---<style>
+  /* Force eyebrow and stat to be bold navy blue */
+  body section#impact .card .eyebrow,
+  body section#impact .card .stat {
+    color: #001f5b !important;  /* deep navy for clarity */
+    font-weight: 800 !important; /* 800 ensures visual boldness */
+    font-variation-settings: "wght" 800; /* for variable fonts */
+    text-transform: uppercase;  /* optional - makes them look like labels */
+    letter-spacing: 0.5px;
+  }
+
+  <style>
+    .mission-brand {
+      font-size: 3rem !important; /* doubled for emphasis */
+    }
+  </style>
+</style>--->
+
+<style> 
+  /* Make the eyebrow and stat text bold navy blue */ 
+  section#impact .eyebrow, section#impact .stat { 
+  color: navy !important; 
+  font-weight: 700 !important; 
+  }
+
+  <style>
+    .mission-brand {
+      font-size: 3rem !important; /* doubled for emphasis */
+    }
+  </style>
+</style>"
+
+<style>
+  /* Make the strong text inside the impact grid navy blue and bold */
+  #impact .card strong {
+    color: navy;
+    font-weight: bold;
+  }
+
+  <style>
+    .mission-brand {
+      font-size: 3rem !important; /* doubled for emphasis */
+    }
+  </style>
+</style>
 </head>
 
 <body>
-  <header>
-    <div class="wrap nav" role="navigation" aria-label="Primary">
-      <a class="brand" href="/">
-        <img src="img/Novawerke AI Logo.png" alt="Novawerke AI Logo" style="height:48px;width:auto;" />
-      </a>
-    </div>
-  </header>
+<!-- Shared Header -->
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <img src="img/Novawerke AI Logo.png" alt="Novawerke AI Logo" style="height:48px;width:auto;">
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="AIGTI.html">Gov AI Consulting</a>
+      <a href="magic-glove.html">Magic Glove™</a>
+      <a href="nelson.html">NELSON™</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
 
   <main>
     <!-- HERO -->
     <section class="hero">
       <div class="wrap text-center">
         <h1 class="mission-title">
-          <span class="mission-brand">Novawerke AI</span><br />
-          <span class="mission-sub">AIGTI Mission-Readiness Program</span>
+          <!--- <span class="mission-brand">Novawerke AI</span><br />>-->
+          <span class="mission-brand" style="font-size: 4rem; font-weight: 700;">Novawerke AI</span><br />
+          <span class="mission-sub" style="font-size: 4rem; font-weight: 700;">AIGTI Mission-Readiness Program</span>
         </h1>
         <h3 class="mission-tagline">
           REMOVING BARRIERS TO AMERICAN LEADERSHIP IN ARTIFICIAL INTELLIGENCE
@@ -132,9 +200,9 @@
         </div>
 
         <div class="grid cols-3" style="margin-top:20px">
-          <div class="card"><strong>Federal alignment</strong><br/>Supports EO&nbsp;14179 and OMB&nbsp;M-25-21 goals for efficient, transparent AI adoption.</div>
-          <div class="card"><strong>Standardization</strong><br/>A common, interoperable “rail gauge” for AI governance artifacts across agencies.</div>
-          <div class="card"><strong>Acquisition readiness</strong><br/>Clause pack + vendor questionnaire to streamline solicitations and attestations.</div>
+          <div class="card"><strong>FEDERAL ALIGNMENT</strong><br/>Supports EO&nbsp;14179 and OMB&nbsp;M-25-21 goals for efficient, transparent AI adoption.</div>
+          <div class="card"><strong>STANDARDIZATION</strong><br/>A common, interoperable “rail gauge” for AI governance artifacts across agencies.</div>
+          <div class="card"><strong>ACQUISITION READINESS</strong><br/>Clause pack + vendor questionnaire to streamline solicitations and attestations.</div>
         </div>
       </div>
     </section>
@@ -208,6 +276,16 @@
     </div>
   </footer>
 
+  <script>
+    // Highlight the current page in the nav
+    const currentPage = location.pathname.split("/").pop() || "index.html";
+    document.querySelectorAll("nav a").forEach(link => {
+      if (link.getAttribute("href").includes(currentPage)) {
+        link.classList.add("active");
+      }
+    });
+  </script>
+   
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>

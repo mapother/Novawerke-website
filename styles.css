@@ -1,322 +1,439 @@
 /* =====================================================
-   Novawerke AI - AIGTI Mission Readiness Styling
+   Novawerke AI - Unified Site Styles (Cleaned 2025-10-30)
+   - Deduplicated Magic Glove rules
+   - Normalized image paths (lowercase, hyphenated)
+   - Preserved shared header/nav, hero, utilities, phases, credits
+   - Kept specificity sane; avoided !important where possible
    ===================================================== */
 
-:root {
-  --nv-navy: #0A2C58;
-  --nv-gold: #DAA520;
-  --ink: #323639;
-  --bg: #FFFFFF;
-  --muted: #6B7280;
+/* ===== Design Tokens ===== */
+:root{
+  --nv-navy:#0A2C58;
+  --nv-gold:#DAA520;
+  --ink:#323639;
+  --bg:#FFFFFF;
+  --muted:#6B7280;
+  --danger:#e63946;
 }
 
-/* ===== Base ===== */
-body {
-  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-  margin: 0;
-  color: var(--ink);
-  background: url('img/DSC_0040.JPG') no-repeat center center fixed;
-  background-size: cover;
-  line-height: 1.5;
-  position: relative;
-  overflow-x: hidden;
+/* ===== Global Base ===== */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+  color:var(--ink);
+  background:#fff url('img/DSC_0040.JPG') no-repeat center center fixed;
+  background-size:cover;
+  line-height:1.5;
+  overflow-x:hidden;
+  position:relative;
 }
-
 /* subtle global veil to keep text readable on photo bg */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.06);
-  backdrop-filter: blur(0.5px);
-  z-index: 0;
+body::after{
+  content:"";
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.06);
+  backdrop-filter:blur(.5px);
+  z-index:0;
+}
+header,main,footer{position:relative; z-index:1;}
+.container{max-width:1200px; margin:0 auto; padding:0 2rem;}
+
+/* ===== Shared Header / Navigation ===== */
+.site-header{
+  background:rgba(0,0,0,.8);
+  backdrop-filter:blur(6px);
+  position:sticky; top:0;
+  width:100%;
+  z-index:1000;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.site-header .container{
+  display:flex; align-items:center; justify-content:space-between;
+  max-width:1100px; margin:0 auto; padding:.5rem 1.5rem;
+}
+.site-header .brand img{height:48px; width:auto; vertical-align:middle;}
+.main-nav{display:flex; gap:1.5rem;}
+.main-nav a{
+  color:#fff; font-weight:500; text-decoration:none; font-size:1rem; letter-spacing:.5px;
+  transition:color .3s ease, border-bottom .3s ease; padding-bottom:4px;
+}
+.main-nav a:hover{color:var(--danger); border-bottom:2px solid var(--danger);}
+.main-nav a.active{color:var(--danger); font-weight:700; border-bottom:2px solid var(--danger);}
+.main-nav a:hover,.main-nav a.active{ text-shadow:0 0 8px rgba(230,57,70,.6); }
+@media (max-width:768px){
+  .site-header .container{flex-direction:column; gap:.5rem;}
+  .main-nav{flex-wrap:wrap; justify-content:center; gap:1rem;}
 }
 
-header, main, footer {
-  position: relative;
-  z-index: 1;
+/* ===== Generic Hero (Home) ===== */
+.hero{
+  position:relative;
+  padding:32px 0;
+  text-align:center;
+  color:#fff;
+  background:transparent;
 }
-
-.wrap {
-  max-width: 1100px;
-  margin-inline: auto;
-  padding: clamp(16px, 3vw, 32px);
+.hero::before{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(10,44,88,.55) 0%, rgba(10,44,88,0) 60%);
+  z-index:-1;
 }
+.hero h1,.hero h2,.hero .lede{color:#fff;}
+.hero .lede{ color:#e6e6e6; font-size:clamp(18px,2vw,22px); max-width:70ch; margin:0 auto; }
 
-/* ===== Header / Nav ===== */
-header {
-  position: sticky;
-  top: 0;
-  background: rgba(255, 255, 255, 0.98);
-  border-bottom: 1px solid #EEE;
-  backdrop-filter: blur(8px);
-  z-index: 10;
+/* ===== Utilities ===== */
+.wrap{max-width:1100px; margin-inline:auto; padding:clamp(16px,3vw,32px);}
+.kicker{ color:red; font-size:22px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px;}
+.cta-row{ display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-top:24px; }
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  padding:12px 24px; border-radius:10px; border:1px solid var(--nv-navy);
+  color:#fff; background:var(--nv-navy); font-weight:700; text-decoration:none;
+  cursor:pointer; transition:all .2s ease-in-out;
 }
+.btn:hover{ background:#0C366B; }
+.btn.primary{ background:var(--nv-navy); border-color:var(--nv-navy); color:#fff; }
+.btn.secondary{ background:#fff; color:var(--nv-navy); border:2px solid var(--nv-gold); }
+.btn.secondary:hover{ background:var(--nv-gold); color:#fff; }
+.btn.btn-primary{ background:linear-gradient(135deg, var(--danger), #b0212b); border:0; color:#fff; }
+section{ padding:56px 0; }
+.grid{ display:grid; gap:20px; }
+.grid.cols-3{ grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
+.card{ border:1px solid #EEE; border-radius:14px; padding:20px; background:#FFF; }
+.hidden{ display:none !important; }
+.tiny{ font-size:.85rem; }
 
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+/* ===== Phases (Home) ===== */
+.phases, .phases h2, .phases h3, .phases p{ color:#fff; }
+.phase .badge{
+  background:var(--nv-gold); color:var(--nv-navy); font-weight:700;
+  padding:6px 12px; border-radius:999px; display:inline-block; text-transform:uppercase;
+  letter-spacing:.05em; box-shadow:0 0 10px rgba(218,165,32,.4); transition:all .3s ease-in-out;
 }
+.phase .badge:hover{ box-shadow:0 0 20px rgba(218,165,32,.8); transform:scale(1.05); }
 
-.brand img {
-  height: 48px;
-  width: auto;
+/* ===== CTA banner (Home) ===== */
+.cta-banner h2{ color:var(--danger); font-weight:800; text-shadow:0 0 6px rgba(230,57,70,.5); }
+
+/* ===== Footer & Image Credit ===== */
+.site-footer{ padding:36px 0; text-align:center; color:#475569; }
+.image-credit{
+  background:rgba(0,0,0,.35); color:#fff; padding:16px 0;
+  border-top:1px solid rgba(255,255,255,.15); border-bottom:1px solid rgba(255,255,255,.10);
+  position:relative; z-index:2;
 }
-
-/* ===== Hero ===== */
-.hero {
-  position: relative; /* ensures ::before sits behind content */
-  padding-block: 32px;
-  text-align: center;
-  background: transparent;
-  color: #ffffff;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  /* gentle top gradient for contrast behind the title */
-  background: linear-gradient(180deg, rgba(10, 44, 88, 0.55) 0%, rgba(10, 44, 88, 0.00) 60%);
-  z-index: -1;
-}
-
-.mission-title {
-  margin: 0.25rem 0 0.4rem;
-  font-weight: 700;
-  line-height: 1.1;
-}
-
-.mission-brand {
-  display: block;
-  font-size: clamp(42px, 6vw, 64px);
-  font-weight: 800;
-  color: #ffffff;
-}
-
-.mission-sub {
-  display: block;
-  font-size: clamp(32px, 5vw, 52px);
-  font-weight: 800;
-  color: #ffffff;
-}
-
-.mission-tagline {
-  font-size: clamp(16px, 1.6vw, 20px);
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  color: #ffffff;
-  margin-top: 8px;
-  text-transform: uppercase;
-  opacity: 0.9;
-}
-
-.hero h1, .hero h2, .hero .lede {
-  text-shadow: none !important;
-  color: #ffffff;
-}
-
-.hero .lede {
-  color: #e6e6e6;
-  font-size: clamp(18px, 2vw, 22px);
-  max-width: 70ch;
-  margin: 0 auto;
-}
-
-/* ===== Utilities / Common ===== */
-.kicker {
-  color: red;
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-
-.cta-row {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 24px;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 12px 24px;
-  border-radius: 10px;
-  border: 1px solid var(--nv-navy);
-  color: #FFF;
-  background: var(--nv-navy);
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.btn:hover {
-  background: #0C366B;
-}
-
-.btn.alt {
-  background: #ffffff;
-  color: var(--nv-navy);
-  border: 2px solid var(--nv-gold);
-  font-weight: 700;
-  transition: all 0.3s ease-in-out;
-}
-
-.btn.alt:hover {
-  background: var(--nv-gold);
-  color: #ffffff;
-}
-
-section {
-  padding: 56px 0;
-}
-
-.grid {
-  display: grid;
-  gap: 20px;
-}
-
-.grid.cols-3 {
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}
-
-.card {
-  border: 1px solid #EEE;
-  border-radius: 14px;
-  padding: 20px;
-  background: #FFF;
-}
-
-footer {
-  padding: 36px 0;
-  color: #475569;
-  text-align: center;
-}
-
-.tiny {
-  font-size: 0.85rem;
-}
-
-.hidden {
-  display: none !important;
-}
-
-/* ===== Eyebrow / Headings ===== */
-.eyebrow {
-  color: royalblue; /* per your earlier choice */
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 18px;
-}
-
-/* ===== Program / Resources / Contact over dark panels ===== */
-#program, #program h2, #program h3, #program p, #program li {
-  color: #ffffff !important;
-}
-
-#program {
-  background-color: rgba(0, 0, 0, 0.40);
-  padding: 40px;
-  border-radius: 12px;
-}
-
-#resources, #resources h2, #resources p, #resources li,
-#contact, #contact h2, #contact p, #contact label,
-#contact input, #contact textarea,
-footer, footer p {
-  color: #ffffff !important;
-}
-
-#resources, #contact, footer {
-  background-color: rgba(0, 0, 0, 0.40);
-  padding: 40px;
-  border-radius: 12px;
-}
-
-#resources a, #contact a, footer a {
-  color: var(--nv-gold);
-  text-decoration: none;
-}
-
-#resources a:hover, #contact a:hover, footer a:hover {
-  color: #ffffff;
-  text-decoration: underline;
-}
-
-/* Form fields on dark panels */
-#contact input, #contact textarea {
-  width: 100%;
-  box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 8px;
-  color: #ffffff;
-  padding: 10px 12px;
-}
-
-#contact input::placeholder, #contact textarea::placeholder {
-  color: #cccccc;
-}
-
-/* ===== Phase badge (gold + glow) ===== */
-.phase .badge {
-  background-color: var(--nv-gold);
-  color: var(--nv-navy);
-  font-weight: 700;
-  padding: 6px 12px;
-  border-radius: 999px;
-  display: inline-block;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  box-shadow: 0 0 10px rgba(218, 165, 32, 0.4);
-  transition: all 0.3s ease-in-out;
-}
-
-.phase .badge:hover {
-  box-shadow: 0 0 20px rgba(218, 165, 32, 0.8);
-  transform: scale(1.05);
-}
-
-/* ===== Background image credit (bright white always) ===== */
-.image-credit {
-  background-color: rgba(0, 0, 0, 0.35);
-  color: #ffffff;
-  padding: 16px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-}
-
 .image-credit a,
 .image-credit a:visited,
 .image-credit a:hover,
 .image-credit a:focus,
-.image-credit a:active {
-  color: #ffffff;            /* bright white always */
-  text-decoration: underline;
+.image-credit a:active{
+  color:#fff; text-decoration:underline;
+}
+.image-credit a:hover,.image-credit a:focus{ text-decoration:none; cursor:pointer; }
+
+/* =====================================================
+   MAGIC GLOVE PAGE (scoped)
+   - Uses <body class="magic-glove">
+   - Normalized assets: img/grip-example.png, img/tmg-photo.png
+   ===================================================== */
+
+/* Page background for everything below the header */
+body.magic-glove{
+  background:#111 url("img/grip-example.png") center/cover fixed no-repeat;
+}
+/* Lighter veil than the global one so the photo shows through */
+body.magic-glove::after{ background:rgba(0,0,0,.18); }
+
+/* Top hero block (product + copy) */
+.tmg-hero{ padding:4rem 0; background:#fff; border-bottom:1px solid rgba(0,0,0,.08); }
+.tmg-hero .hero-content{ position:relative; z-index:2; }
+.tmg-hero h1{ color:#111; font-weight:800; }
+.tmg-hero .lead{ color:#222; }
+.tmg-hero h1 .accent{ color:var(--danger); font-weight:900; }
+
+/* Featured layout (copy + image) */
+.tmg-feature{
+  display:grid; grid-template-columns:1.1fr .9fr; gap:2rem; align-items:center;
+}
+.tmg-feature img.tmg-image{
+  width:100%; height:auto; border-radius:16px; box-shadow:0 12px 40px rgba(0,0,0,.18);
+  filter:brightness(1.18) saturate(1.12) contrast(1.05);
+}
+@media (max-width:900px){ .tmg-feature{ grid-template-columns:1fr; } }
+
+/* Sections below the hero sit over the photo background */
+.magic-glove main section:not(.tmg-hero) h2,
+.magic-glove main section:not(.tmg-hero) h3,
+.magic-glove main section:not(.tmg-hero) p{
+  color:#fff; text-shadow:0 1px 8px rgba(0,0,0,.35);
+}
+/* Translucent content card variant if needed for readability */
+.magic-glove .panel{
+  background:rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:20px; padding:1.5rem; backdrop-filter:blur(2px);
 }
 
-.image-credit a:hover,
-.image-credit a:focus {
-  text-decoration: none;     /* optional: cleaner hover */
+/* Founders form */
+#founders{ scroll-margin-top:96px; position:relative; z-index:5; }
+.founders-form{ display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem; }
+.founders-form input[type="text"],
+.founders-form input[type="email"]{
+  background:#0e1530; border:1px solid #263154; color:#eaf0ff;
+  padding:.9rem 1rem; border-radius:12px; width:min(360px,100%);
+}
+.founders-form button{
+  padding:.9rem 1.15rem; border-radius:12px; border:0; font-weight:700;
+  background:linear-gradient(135deg, var(--danger), #b0212b); color:#fff; cursor:pointer;
+}
+/* Pulse-on reveal animation (triggered by JS if desired) */
+@keyframes pulseOutline{ 0%{box-shadow:0 0 0 0 rgba(230,57,70,.55);} 70%{box-shadow:0 0 0 14px rgba(230,57,70,0);} 100%{box-shadow:0 0 0 0 rgba(230,57,70,0);} }
+#founders.pulse-on .founders-form input[type="email"],
+#founders.pulse-on .founders-form button{ animation:pulseOutline 1.4s ease-out 2; border-color:var(--danger); }
+
+/* Ensure nothing invisible intercepts clicks in the form area */
+#founders .founders-form, #founders .founders-form *{ pointer-events:auto; opacity:1; filter:none; }
+
+/* ===== Home page dark panels (program/resources/contact) ===== */
+#program, #program h2, #program h3, #program p, #program li{ color:#fff; }
+#program{ background:rgba(0,0,0,.40); padding:40px; border-radius:12px; }
+
+#resources, #contact, footer{
+  background:rgba(0,0,0,.40); padding:40px; border-radius:12px;
+}
+#resources, #resources h2, #resources p, #resources li,
+#contact, #contact h2, #contact p, #contact label,
+#contact input, #contact textarea, footer, footer p{ color:#fff; }
+#resources a, #contact a, footer a{ color:var(--nv-gold); text-decoration:none; }
+#resources a:hover, #contact a:hover, footer a:hover{ color:#fff; text-decoration:underline; }
+#contact input, #contact textarea{
+  width:100%; background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.4); border-radius:8px; color:#fff; padding:10px 12px;
+}
+#contact input::placeholder, #contact textarea::placeholder{ color:#ccc; }
+
+/* === Magic Glove: full-bleed photo + readable hero copy === */
+body.magic-glove { /* already sets the photo site-wide */ }
+
+.tmg-hero{
+  background: transparent;                 /* kill the white slab */
+  padding: 4rem 0;
 }
 
-/* LINK CLICK HOTFIX (safe to append) */
-.image-credit {
-  position: relative;
-  z-index: 2;              /* float above any overlays */
+/* keep the hero text readable over the photo */
+.tmg-hero .tmg-copy h1,
+.tmg-hero .tmg-copy p{
+  color: #ffffff;
+  text-shadow: 0 1px 8px rgba(0,0,0,.35);
 }
 
-.image-credit a {
-  pointer-events: auto;     /* ensure clicks aren’t swallowed */
-  cursor: pointer;
+/* optional: a very soft gradient behind the text for contrast */
+.tmg-hero .tmg-copy{
+  background: linear-gradient(90deg, rgba(0,0,0,.35), rgba(0,0,0,0));
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
 }
+
+/* Offer list spacing */
+.offer-list{
+  margin: 0.75rem 0 0;
+  padding-left: 1.1rem;
+}
+.offer-list li{ margin: .35rem 0; }
+
+/* Make the two new panels sit nicely over the photo */
+#offer.panel, #preorder.panel{
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 20px;
+  padding: 1.5rem;
+  backdrop-filter: blur(2px);
+}
+#offer h2, #preorder h2,
+#offer p,  #preorder p,
+#offer li, #preorder li { color:#fff; text-shadow:0 1px 8px rgba(0,0,0,.35); }
+
+/* Gift form layout (matches your clean UI) */
+.gift-form .form-subhead{
+  color:#fff; margin:1rem 0 .25rem; font-weight:800; letter-spacing:.02em;
+  text-shadow:0 1px 8px rgba(0,0,0,.35);
+}
+.gift-form .form-grid{
+  display:grid; gap:12px; grid-template-columns: repeat(2, 1fr);
+}
+.gift-form .form-grid .wide{ grid-column: 1 / -1; }
+@media (max-width: 800px){
+  .gift-form .form-grid{ grid-template-columns: 1fr; }
+}
+.gift-form label{ display:block; font-size:.95rem; color:#e9eefc; margin-bottom:.25rem; }
+.gift-form input, .gift-form textarea{
+  width:100%; background:#0e1530; border:1px solid #263154; color:#eaf0ff;
+  padding:.8rem 1rem; border-radius:12px;
+}
+.gift-form textarea{ resize:vertical; }
+
+/* --- Make the 3 Christmas Pre-Order cards navy text instead of white --- */
+#preorder .card,
+#preorder .card h3,
+#preorder .card p,
+#preorder .card li {
+  color: #0A2C58;  /* dark navy */
+  background: rgba(255,255,255,0.95);  /* light background for contrast */
+  border: 1px solid rgba(0,0,0,0.08);
+  text-shadow: none;
+}
+
+#preorder .card h3 {
+  font-weight: 800;
+  color: #0A2C58;
+  text-transform: none;
+}
+
+/* optional: soft inner padding + shadow to match site aesthetic */
+#preorder .card {
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+
+/* === FINAL OVERRIDES (Magic Glove Christmas polish) ================== */
+/* 1) Christmas Pre-Order grid cards: navy text, no inner boxes/borders */
+#preorder .card{
+  background: rgba(255,255,255,0.96);
+  color: #0A2C58;           /* dark navy text */
+  border: 0;                /* no card edge */
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+}
+
+/* text-only look inside cards (never draw boxes behind text) */
+#preorder .card h3,
+#preorder .card p,
+#preorder .card ul,
+#preorder .card li{
+  background: transparent !important;
+  color: #0A2C58;
+  text-shadow: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+#preorder .card h3{ font-weight:800; }
+#preorder .card ul{ margin:.5rem 0 0; padding-left:1.1rem; list-style: disc inside; }
+#preorder .card li{ margin:.35rem 0; }
+#preorder .card li::marker{ color:#0A2C58; }
+
+/* 2) Gift Mailer panel: soft transparent pine-green with readable white text */
+#gift-mailer.panel{
+  background: rgba(6, 83, 43, 0.22); /* pine green tint */
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 20px;
+  padding: 1.5rem;
+  backdrop-filter: blur(2px);
+}
+#gift-mailer h2,
+#gift-mailer p,
+#gift-mailer label{
+  color:#fff;
+  text-shadow:0 1px 8px rgba(0,0,0,.35);
+}
+
+/* keep gift-form inputs as designed; but never show 'boxes' in the 3 info cards */
+#preorder .card input,
+#preorder .card textarea,
+#preorder .card select{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  color: #0A2C58 !important;
+}
+
+/* === Add left/right breathing room for all dark translucent panels === */
+.magic-glove .panel,
+#offer.panel, #preorder.panel, #gift-mailer.panel, footer,
+.site-footer{
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1100px;   /* keeps them centered and inset */
+  padding-left: 2rem;  /* gentle internal buffer */
+  padding-right: 2rem;
+}
+
+/* --- Force bright, centered GOAT headline (no blur, no dimming) --- */
+.headline-panel,
+.headline-panel * {
+  opacity: 1 !important;              /* defeat any inherited dimming */
+}
+
+/* Headline band: remove dark overlay entirely */
+.headline-panel {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  padding: 2rem;                /* keep spacing */
+  margin-left: auto; 
+  margin-right: auto; 
+  max-width: 1100px;            /* keep breathing room */
+}
+
+/* Keep the headline bright & centered */
+.goat-headline {
+  color: #ffffff !important;
+  text-align: center !important;
+  font-size: clamp(2.4rem, 6.8vw, 4.9rem);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: .2px;
+  text-shadow: 0 2px 16px rgba(0,0,0,.55), 0 0 1px rgba(0,0,0,.65);
+}
+
+.goat-headline .highlight {
+  color: #FFD700; /* gold accent for GOAT */
+  letter-spacing: 1px;
+}
+
+/* === Bright white text for headline and hero === */
+.magic-glove .goat-headline,
+.magic-glove .tmg-hero h1,
+.magic-glove .tmg-hero p,
+.magic-glove main section h2,
+.magic-glove main section p {
+  color: #FFFFFF !important;
+  text-shadow: 0 0 8px rgba(0,0,0,0.45); /* subtle lift */
+  opacity: 1 !important;
+}
+
+/* === Reduce overlay darkness === */
+body.magic-glove::before {
+  background: rgba(0,0,0,0.08) !important;  /* down from 0.25 */
+}
+
+/* === Lighten dark panel backgrounds === */
+#offer.panel, #preorder.panel {
+  background: rgba(0,0,0,0.12) !important;
+  backdrop-filter: blur(1px);
+}
+
+#impact .kicker {
+  color: #85ff1a; /* bright, vibrant green */
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.4),
+    0 0 10px rgba(255, 26, 26, 0.7);
+}
+
+
+
+
+
+
+
+

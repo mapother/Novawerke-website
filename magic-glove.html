@@ -1,236 +1,317 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Novawerke AI — The Magic Glove™</title>
-  <meta name="description" content="The Magic Glove™ translates your swing into real-time coaching with modular, edge-based AI. Join the first 100 Founding Members.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  
-  <!-- Open Graph (LinkedIn, FB, Slack, etc) -->
-  <meta property="og:title" content="Novawerke AI — The Magic Glove™">
-  <meta property="og:description" content="The Magic Glove™ translates your swing into real-time coaching with modular, edge-based AI. Join the first 100 Founding Members.">
-  <meta property="og:image" content="https://novawerke.ai/img/golfer-hero.png">
-  <meta property="og:url" content="https://novawerke.ai">
-  <meta property="og:type" content="website">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Novawerke AI – The Magic Glove™</title>
+  <meta name="description" content="The Magic Glove™: AI-powered feedback for golf and performance training. Join the Founding Members List.">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="img/favicon.png" />
 
-  <!-- Twitter (X) -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Novawerke AI — The Magic Glove™">
-  <meta name="twitter:description" content="AI-powered coaching, starting with golf. Be among the first 100 Founding Members.">
-  <meta name="twitter:image" content="https://novawerke.ai/img/golfer-hero.png">
-
-  
+  <!-- Page-scoped styles to guarantee legibility and Xmas clarity -->
   <style>
-    :root{
-      --bg:#0b1020;        /* deep navy */
-      --ink:#e7ecf7;       /* near-white */
-      --muted:#a9b4d0;     /* cool gray */
-      --brand:#4ea8ff;     /* electric blue */
-      --brand-2:#7c3aed;   /* violet accent */
-      --accent:#22c55e;    /* sport green */
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
-    a{color:inherit;text-decoration:none}
-    .container{width:min(1100px,92vw);margin:0 auto}
-    /* Hero */
-    .hero{
-      position:relative;
-      min-height:92vh;
-      display:grid;
-      place-items:center;
-      overflow:hidden;
-      isolation:isolate;
-    }
-    .hero::before{
-      content:"";
-      position:absolute; inset:0;
-      background:linear-gradient(105deg, rgba(11,16,32,.85) 0%, rgba(11,16,32,.45) 45%, rgba(11,16,32,.85) 100%);
-      z-index:1;
-    }
-    .hero img{
-      position:absolute; inset:0;
-      width:100%; height:100%; object-fit:cover; object-position:center right;
-      filter:saturate(1.15) contrast(1.05);
-      transform:scale(1.05);
-      will-change:transform;
-    }
-    .hero-content{position:relative; z-index:2; text-align:left; padding:8rem 0 6rem}
-    .eyebrow{letter-spacing:.2em; text-transform:uppercase; color:var(--muted); font-weight:600; font-size:.85rem}
-    h1{font-size:clamp(2.2rem,5vw,4rem); line-height:1.05; margin:.6rem 0 1rem; font-weight:800}
-    .lead{font-size:clamp(1.05rem,2.2vw,1.35rem); color:#d7def1; max-width:42rem}
-    .cta-row{display:flex; gap:.75rem; margin-top:1.25rem; flex-wrap:wrap}
-    .btn{
-      display:inline-flex; align-items:center; gap:.5rem; padding:.9rem 1.15rem;
-      border-radius:14px; font-weight:700; border:1px solid transparent; cursor:pointer;
-      transition:transform .08s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
-      will-change:transform;
-    }
-    .btn-primary{
-      background:linear-gradient(135deg,var(--brand),var(--brand-2));
-      box-shadow:0 10px 30px rgba(78,168,255,.28);
-    }
-    .btn-primary:hover{transform:translateY(-1px); box-shadow:0 16px 40px rgba(124,58,237,.35)}
-    .btn-ghost{border-color:#2a3355; color:#c6d1ee; background:rgba(255,255,255,.02)}
-    .btn-ghost:hover{background:rgba(255,255,255,.06)}
-    .kickers{display:flex; gap:1rem; margin-top:1.1rem; color:var(--muted); font-size:.95rem; flex-wrap:wrap}
-    .kickers span{display:inline-flex; align-items:center; gap:.45rem}
-    .dot{width:.38rem; height:.38rem; background:var(--accent); border-radius:50%}
-    /* Sections */
-    section{padding:4.5rem 0; border-top:1px solid #151b32}
-    h2{font-size:clamp(1.6rem,3.2vw,2.2rem); margin:0 0 1rem; font-weight:800}
-    p{color:#cbd4ee}
-    .grid-3{display:grid; gap:1.3rem; grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-      border:1px solid #24304f; border-radius:18px; padding:1.25rem 1.15rem; min-height:180px;
-    }
-    .card h3{margin:.2rem 0 .5rem; font-size:1.1rem}
-    .badge{font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; color:#93a3c7}
-    /* Founders box */
-    .founders{
-      display:grid; gap:1.4rem; grid-template-columns: 1.2fr .8fr; align-items:center;
-      background:radial-gradient(1000px 600px at 100% 0%, rgba(124,58,237,.20), transparent 60%),
-                 linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-      border:1px solid #2b3557; border-radius:22px; padding:1.4rem 1.4rem 1.6rem;
-    }
-    @media (max-width:860px){ .founders{grid-template-columns:1fr} }
-    form{display:flex; gap:.6rem; flex-wrap:wrap}
-    input[type="email"], input[type="text"]{
-      background:#0e1530; border:1px solid #263154; color:#eaf0ff;
-      padding:.9rem 1rem; border-radius:12px; width:min(300px, 100%);
-    }
-    footer{padding:3rem 0; color:#8fa1c8; font-size:.9rem}
-    .link{color:#cfe0ff; text-decoration:underline}
-    /* subtle fade in */
-    .fade-in{opacity:0; transform:translateY(10px); animation:fade .6s ease forwards}
-    .fade-in.d2{animation-delay:.1s} .d3{animation-delay:.2s} .d4{animation-delay:.3s}
-    @keyframes fade{to{opacity:1; transform:none}}
-  </style>
-</head>
-<body>
+    /* Keep the invitation text white in the left card */
+    .tmg-hero .offer-inline,
+    .tmg-hero .offer-inline * { color: #fff !important; }
+    .tmg-hero .offer-inline strong { color: inherit !important; font-weight: 700; }
+    .offer-inline .offer-list { margin: 0.75rem 0 0; padding-left: 1.1rem; }
+    .offer-inline .offer-list li { margin: .35rem 0; }
 
-  <!-- HERO -->
-  <header class="hero">
-    <img src="img/golfer-swing.png" alt="Abstract polygon golfer swinging a driver">
-    <div class="container hero-content">
-      <div class="eyebrow fade-in">The Magic Glove™</div>
-      <h1 class="fade-in d2">Reinventing Golf Training with AI</h1>
-      <p class="lead fade-in d3">
-        The Magic Glove™ translates your swing into real-time coaching.
-        Modular, edge-based AI turns grip + wrist data into instant, personal feedback.
-      </p>
-      <div class="cta-row fade-in d4">
-        <a href="#founders" class="btn btn-primary">Join the Founding Members List</a>
-        <a href="#how" class="btn btn-ghost">How it Works</a>
-      </div>
-      <div class="kickers fade-in d4">
-        <span><span class="dot"></span> First 100 members get lifetime perks</span>
-        <span><span class="dot"></span> Early access & private updates</span>
-        <span><span class="dot"></span> Golf is just the beginning</span>
-      </div>
+    /* Helper styles for the checkout section */
+    .pay-help { margin-top: .5rem; font-size: .95rem; opacity: .95; }
+    .pay-help .nowrap { white-space: nowrap; }
+    .tiny-note { font-size: .85rem; opacity: .9; }
+
+    /* Optional small field for gift message (no big form) */
+    .gift-message {
+      margin-top: .75rem;
+      display: flex;
+      gap: .5rem;
+      align-items: flex-start;
+    }
+    .gift-message label { margin-top: .35rem; white-space: nowrap; color:#fff; }
+    .gift-message textarea {
+      width: 100%;
+      min-height: 70px;
+      resize: vertical;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: .5rem .65rem;
+      background: rgba(0,0,0,0.25);
+      color: #fff;
+    }
+
+    /* Xmas section readability + branding */
+    #preorder {
+      position: relative;
+      color: #fff;
+    }
+    #preorder::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45); /* subtle darken for legibility */
+      z-index: 0;
+      border-radius: 20px; /* match panel rounding */
+    }
+    #preorder > .container { position: relative; z-index: 1; }
+
+    .xmas-badge {
+      display: inline-block;
+      background: #c1121f;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      padding: .25rem .5rem;
+      border-radius: 8px;
+      margin-bottom: .5rem;
+    }
+    .xmas-sub { margin: .25rem 0 1rem 0; opacity: .95; color:#fff; }
+    .xmas-purchase-note { margin-top: .5rem; font-size: .95rem; opacity: .95; color:#fff; }
+
+    /* A lightweight “blocking” notice if no shipping comes back */
+    .shipping-required {
+      display: none;
+      margin-top: .75rem;
+      color: #ffb0b0;
+      background: rgba(220,0,0,0.15);
+      border: 1px solid rgba(220,0,0,0.35);
+      padding: .5rem .75rem;
+      border-radius: 8px;
+    }
+  </style>
+
+  <!-- PayPal JS SDK (replace YOUR_LIVE_CLIENT_ID) -->
+  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_LIVE_CLIENT_ID&currency=USD&components=buttons"></script>
+</head>
+
+<body class="magic-glove">
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <img src="img/Novawerke AI Logo.png" alt="Novawerke AI Logo" style="height:48px;width:auto;">
+      </a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="AIGTI.html">Government Consulting</a>
+        <a href="magic-glove.html" class="active">Magic Glove™</a>
+        <a href="nelson.html">NELSON™</a>
+        <a href="contact.html">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <!-- VISION -->
-  <section id="vision">
+  <!-- Hero Headline Above Glove Card -->
+  <section class="headline-panel">
     <div class="container">
-      <h2>More than a glove. A new way to learn.</h2>
-      <p style="max-width: 60ch;">
-        Novawerke builds modular, edge-based AI brains that enhance human performance.
-        Golf is our proving ground — and The Magic Glove™ is where it begins.
-        We combine embedded sensing, on-device intelligence, and voice-ready feedback to
-        turn “what just happened?” into “I know exactly what to do next.”
-      </p>
-      <div class="grid-3" style="margin-top:1.2rem;">
-        <div class="card"><div class="badge">Sensors</div><h3>Grip + Motion</h3><p>Track grip pressure, hand angle, and wrist rotation from your glove in real time.</p></div>
-        <div class="card"><div class="badge">AI Coaching</div><h3>On-device intelligence</h3><p>Edge models analyze signals locally for instant, low-latency insights.</p></div>
-        <div class="card"><div class="badge">Growth</div><h3>Adapts to you</h3><p>Baseline comparisons vs. pro data + learning that evolves with your swing.</p></div>
-      </div>
+      <h1 class="goat-headline">
+        Stop Practicing.<br>
+        Start Training to Become the <span class="highlight">GOAT</span> Golfer.
+      </h1>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section id="how">
-    <div class="container">
-      <h2>How it Works</h2>
-      <p class="">From your swing to instant feedback — in milliseconds.</p>
-      <div class="grid-3" style="margin-top:1.2rem;">
-        <div class="card"><div class="badge">1</div><h3>Swing Input</h3><p>Natural motion — nothing to “do.” Just swing.</p></div>
-        <div class="card"><div class="badge">2</div><h3>Sensor Capture</h3><p>Embedded sensors capture grip pressure + wrist kinematics.</p></div>
-        <div class="card"><div class="badge">3</div><h3>Signal Processing</h3><p>Noise reduction and feature extraction on-device.</p></div>
-        <div class="card"><div class="badge">4</div><h3>AI Analysis</h3><p>Edge models compare to pro baselines and your history.</p></div>
-        <div class="card"><div class="badge">5</div><h3>Coaching Feedback</h3><p>Clear guidance to correct the miss — via app, voice, or PDF.</p></div>
-      </div>
-    </div>
-  </section>
+  <main>
+    <!-- Primary Section with Glove + Golf Pro Background -->
+    <section class="tmg-hero">
+      <div class="container">
+        <div class="tmg-feature">
+          <div class="tmg-copy">
+            <h1>The Magic Glove™ — An AI Tool Built for Feel, Designed for Feedback</h1>
+            <p>
+              A performance glove that captures grip dynamics in real time using "AI" — pressure, timing, and consistency — so golfers can train smarter and coaches can quantify progress.
+              Designed for practice and play, with edge-AI analysis that keeps latency near zero.
+            </p>
+            <p>
+              Early testers get private updates and priority access. Golf is just the beginning — our artificial intelligence architecture
+              extends to rehabilitation and high-performance training across sports.
+            </p>
 
-  <!-- FOUNDING MEMBERS -->
-  <section id="founders">
-    <div class="container">
-      <div class="founders">
-        <div>
-          <h2>Be one of the first 100</h2>
-          <p style="max-width:60ch;">
-            We’re inviting early golfers to help shape The Magic Glove™.
-            Founding Members receive early access, lifetime perks, a private update channel,
-            and a real voice in the product’s evolution.
-          </p>
-          <form method="post" action="https://formspree.io/f/mrbypgrq">
-            <input type="text" name="name" placeholder="Your name" required>
-            <input type="email" name="email" placeholder="Email address" required>
-            <button class="btn btn-primary" type="submit">Join the List</button>
-          </form>
-          <p style="color:#9fb0d7; font-size:.9rem; margin-top:.6rem;">
-            No spam. You can opt out anytime. We’ll only email you about Magic Glove updates.
-          </p>
-        </div>
-        <div class="card">
-          <div class="badge">Why Join</div>
-          <h3>Real influence, real perks</h3>
-          <ul style="margin:.3rem 0 0 1rem; line-height:1.6">
-            <li>Early product access + private builds</li>
-            <li>Lifetime Founding Member pricing</li>
-            <li>Direct feedback sessions with the team</li>
-            <li>Limited-run Founding Member gear</li>
-          </ul>
+            <!-- Inline Founding Members invitation -->
+            <div class="offer-inline">
+              <h2>An Invitation to the Founding Members Club</h2>
+              <p>
+                We are inviting the <strong>first 100</strong> serious golfers to help us shape the future of golf training.
+                As a Founding Member, you are not just a customer; you are a partner. Join the first 100 testers and receive early access.
+              </p>
+              <p style="font-size: 1.8em;">
+                Get the <strong>Magic Glove™</strong> for just <strong>$99</strong>!
+              </p>
+              <ul class="offer-list">
+                <li>Receive the <strong>AI Coaching</strong> subscription <strong>free for life</strong>.</li>
+                <li>Get early access to new features and private builds.</li>
+                <li>Have a real voice in the product’s evolution with direct feedback sessions.</li>
+              </ul>
+
+              <!-- Keep button at the end of the text -->
+              <div class="cta-row">
+                <a href="#preorder" class="btn btn-primary" id="ctaPreorder">Pre-Order and Become a Founding Member</a>
+              </div>
+            </div>
+          </div>
+
+          <img src="img/tmg-photo.png" alt="The Magic Glove product photo" class="tmg-image" />
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <h2>About Novawerke</h2>
-      <p style="max-width: 65ch;">
-        Novawerke is an AI factory — designing modular AI brains that merge human performance
-        with machine precision. The Magic Glove™ is our flagship showcase product, proving what’s possible.
-        From sports to wellness, we’re building systems that think with purpose.
-      </p>
-    </div>
-  </section>
+    <!-- Christmas Gift Pre-Order (PayPal checkout, no big form) -->
+    <section id="preorder" class="panel">
+      <div class="container">
+        <span class="xmas-badge">Christmas Gift Pre-Order</span>
+        <h2>Gift a Magic Glove™ — Print the Card Today 🎄</h2>
+        <p class="xmas-sub">
+          You’re purchasing the <strong>Christmas Gift Card pre-order</strong> for the Magic Glove™ at
+          <strong>$99 (Founding Member price)</strong>. We’ll mail a Christmas card using the shipping address you provide at checkout.
+          Hardware ships estimated <strong>Feb–Mar 2026</strong>.
+        </p>
 
-  <footer>
+        <!-- Optional small gift message (no address form) -->
+        <div class="gift-message">
+          <label for="gift_message"><strong>Include a Christmas message</strong></label>
+          <textarea id="gift_message" placeholder="Write a short note to include on the Christmas card…"></textarea>
+        </div>
+
+        <!-- PayPal buttons render here -->
+        <div id="paypal-button-container" class="cta-row" style="margin-top: 1rem;"></div>
+
+        <!-- Helper text so people know they can pay by card -->
+        <div class="pay-help">
+          Secure checkout via <strong>PayPal</strong> or any major credit/debit card —
+          <em>no PayPal account required.</em>
+        </div>
+
+        <!-- Explicit purchase clarity -->
+        <p class="xmas-purchase-note">
+          This checkout is for the <strong>Christmas Gift Card pre-order ($99)</strong>. The Founding Members offer above explains the perks you get with this purchase.
+        </p>
+
+        <!-- Gift Card download; auto-clicked after successful payment -->
+        <div class="cta-row" style="margin-top: 1rem;">
+          <a href="assets/Magic-Glove-Gift-Card.pdf" class="btn secondary" id="btnGiftCard" download>Download Gift Card</a>
+        </div>
+
+        <p id="giftThanks" class="tiny-note" style="display:none; margin-top:.5rem;">
+          Thanks! We received your order. Your gift card download should start automatically. We’ll mail your Christmas card using your PayPal shipping address.
+        </p>
+
+        <!-- Notice if no shipping is returned (edge case) -->
+        <div id="shipRequired" class="shipping-required">
+          We need a shipping address to mail your Christmas card. Please ensure you choose or add a shipping address in the PayPal window.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
     <div class="container">
-      © 2025 Novawerke AI · <a class="link" href="mailto:hello@novawerke.ai">hello@novawerke.ai</a> ·
-      <a class="link" href="/magic-glove.html">Details</a> · <a class="link" href="/nelson.html">NELSON™</a>
+      <p>© <span id="y"></span> Novawerke AI | All Rights Reserved</p>
     </div>
   </footer>
 
-  <!-- Smooth scroll (tiny, no deps) -->
+  <!-- Scripts -->
   <script>
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id=a.getAttribute('href'); const el=document.querySelector(id);
-        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
-      });
-    });
+    // Set year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Smooth scroll from inline CTA to preorder section
+    (function () {
+      const ctaPreorder = document.getElementById('ctaPreorder');
+      const preorder    = document.getElementById('preorder');
+      if (ctaPreorder && preorder) {
+        ctaPreorder.addEventListener('click', function(e){
+          e.preventDefault();
+          preorder.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+    })();
+
+    // PayPal Smart Buttons: force shipping, capture, send to Formspree, auto-download gift card
+    (function () {
+      const giftBtn   = document.getElementById('btnGiftCard');
+      const giftMsgEl = document.getElementById('gift_message');
+      const thanksEl  = document.getElementById('giftThanks');
+      const shipReqEl = document.getElementById('shipRequired');
+
+      if (!window.paypal || !document.getElementById('paypal-button-container')) return;
+
+      paypal.Buttons({
+        style: { layout: 'horizontal', label: 'pay', shape: 'pill' },
+
+        // Create a $99 order and request a shipping address every time
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              custom_id: 'XMAS_PREORDER_2025',
+              description: 'Christmas Gift Pre-Order — Magic Glove™ (Founding Member $99)',
+              amount: { value: '99.00', currency_code: 'USD' },
+              category: 'PHYSICAL_GOODS'
+            }],
+            application_context: {
+              shipping_preference: 'GET_FROM_FILE' // prompt/require a shipping address
+            }
+          });
+        },
+
+        // Capture payment, collect shipping + payer details, send to Formspree, then download gift card
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(async function(order) {
+            try {
+              const pu = order?.purchase_units?.[0];
+              const shipping = pu?.shipping;
+              const payer = order?.payer || {};
+
+              // If no shipping returned, block fulfillment and nudge buyer to include one
+              if (!shipping || !shipping.address) {
+                if (shipReqEl) shipReqEl.style.display = 'block';
+                alert('Please include a shipping address in PayPal so we can mail the Christmas card.');
+                return; // do not fulfill without shipping
+              }
+
+              // Prepare payload for your Formspree endpoint
+              const payload = {
+                product_type: 'Christmas Gift Pre-Order',
+                price: '99.00',
+                order_id: order?.id || '',
+                custom_id: pu?.custom_id || '',
+                payer_email: payer?.email_address || '',
+                payer_name: [payer?.name?.given_name, payer?.name?.surname].filter(Boolean).join(' '),
+                ship_name: shipping?.name?.full_name || '',
+                ship_addr1: shipping?.address?.address_line_1 || '',
+                ship_addr2: shipping?.address?.address_line_2 || '',
+                ship_city:  shipping?.address?.admin_area_2 || '',
+                ship_state: shipping?.address?.admin_area_1 || '',
+                ship_zip:   shipping?.address?.postal_code   || '',
+                ship_country: shipping?.address?.country_code || '',
+                gift_message: (giftMsgEl?.value || '')
+              };
+
+              // Send to Formspree silently
+              await fetch('https://formspree.io/f/mrbypgrq', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: new URLSearchParams(payload)
+              });
+
+              // Show confirmation and trigger gift card download
+              if (thanksEl) thanksEl.style.display = 'block';
+              if (giftBtn)  giftBtn.click();
+            } catch (e) {
+              console.error(e);
+              alert('Payment captured, but we could not record your details automatically. We will contact you to confirm the mailing address.');
+            }
+          });
+        },
+
+        onError: function(err) {
+          console.error(err);
+          alert('Payment error. Please try again or contact us.');
+        }
+      }).render('#paypal-button-container');
+    })();
   </script>
 </body>
 </html>
-
-
-
-

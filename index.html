@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Novawerke AI – Building the Future of Intelligent Systems</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+
+  <!-- Page-only overrides -->
+  <style>
+    /* Layout: sticky footer */
+    html, body { height: 100%; }
+    body {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      color: #fff;
+      /* Your single full-page background image (PNG as you fixed) */
+      background-image: url('img/US-capital-AI.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      background-color: #000; /* fallback */
+    }
+    main { flex: 1; } /* pushes footer to bottom */
+
+    /* Global page overlay for readability */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55); /* increase/decrease to taste (0.45–0.65) */
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Make sure sections don't paint over the background */
+    header, main, footer,
+    .site-header, .hero, .site-footer,
+    .container { background: transparent !important; position: relative; z-index: 1; }
+
+    /* Hero typography: at least ~2x bigger than before */
+    .hero h1 {
+      /* Clamp ensures good scaling across devices; raise the max if you want even bigger */
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.3em;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.65);
+    }
+    .hero h2,
+    .tagline-sub,
+    .hero p {
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    /* Optional: a subtle backdrop behind the hero text block for max contrast */
+    .hero .hero-content {
+      display: inline-block;
+      padding: 16px 18px;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.25);           /* raise to 0.35–0.45 if needed */
+      backdrop-filter: blur(2px);              /* remove if unsupported */
+    }
+
+    /* Button spacing so they don’t crowd each other */
+    .btn { margin-top: 10px; }
+
+    /* Ensure footer text stays readable */
+    .site-footer { color: #fff; }
+    .site-footer a { color: #fff; text-decoration: underline; }
+  </style>
+
+  
+</head>
+
+<body>
+<!-- Shared Header -->
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <img src="img/Novawerke AI Logo.png" alt="Novawerke AI Logo" style="height:48px;width:auto;">
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="AIGTI.html">Gov AI Consulting</a>
+      <a href="magic-glove.html">Magic Glove™</a>
+      <a href="nelson.html">NELSON™</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero fade-in">
+    <div class="container">
+      <div class="hero-content">
+        <h1>NOVAWERKE AI</h1>
+        <h2>Artificial Intelligence On the Edge</h2>
+
+        <!-- Your chosen one-line value statement -->
+        <p class="tagline-sub">
+          <strong>Novawerke AI builds edge-based, human-centric artificial intelligence systems that learn, adapt, and empower.</strong>
+        </p>
+
+        <p>
+          Novawerke AI also offers artificial intelligence consulting to a wide array of institutions.
+        </p>
+
+        <!-- Government Consulting first, then Magic Glove -->
+        <a href="AIGTI.html" class="btn secondary">Learn More About Government Consulting</a>
+        <a href="magic-glove.html" class="btn primary">Explore The Magic Glove™</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2025 Novawerke AI  |  All Rights Reserved</p>
+  </div>
+</footer>
+</body>
+</html>

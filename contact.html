@@ -2,53 +2,159 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact | Novawerke AI</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Page-scope tweaks: background image + slight veil for readability -->
   <style>
-    body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background: #fff; color: #111; }
-    nav { background: #1a1a1a; text-align: center; padding: 0.75rem 0; }
-    nav a { color: white; margin: 0 1rem; text-decoration: none; font-weight: 600; }
-    nav a:hover { text-decoration: underline; }
-    header { background: #222; color: white; padding: 4rem 2rem; text-align: center; }
-    header h1 { font-size: 2.25rem; margin-bottom: 1rem; }
-    header p { font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
-    form { max-width: 600px; margin: 2rem auto; padding: 2rem; background: #f9f9f9; border-radius: 10px; }
-    label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
-    input, textarea { width: 100%; padding: 0.75rem; margin-bottom: 1.5rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
-    button { background: #4e9af1; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
-    button:hover { background: #367bd6; }
-    footer { text-align: center; font-size: 0.9rem; padding: 2rem; color: #777; margin-top: 4rem; }
+    /* Use the provided image as the full-page background */
+    body.contact{
+      background: #111 url("img/Glove and Computer.png") center/cover fixed no-repeat;
+    }
+    /* a touch stronger veil than global so form text pops over the photo */
+    body.contact::after{ background: rgba(0,0,0,.18); }
+
+    /* Reuse translucent panel look used elsewhere */
+    .contact .panel{
+      background: rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 20px;
+      padding: 1.5rem;
+      backdrop-filter: blur(2px);
+      /* breathing room to align with other pages */
+      margin-left: auto; margin-right: auto; max-width: 1100px; padding-left: 2rem; padding-right: 2rem;
+    }
+
+    /* Ensure headings/labels are readable over the photo */
+    .contact main section h2,
+    .contact main section p,
+    .contact main section label{ color:#fff; text-shadow:0 1px 8px rgba(0,0,0,.35); }
+
+    /* Compact grid for the form fields (matches existing site feel) */
+    .contact-form .form-grid{ display:grid; gap:12px; grid-template-columns:repeat(2,1fr); }
+    .contact-form .form-field.wide{ grid-column:1 / -1; }
+    @media (max-width: 800px){ .contact-form .form-grid{ grid-template-columns:1fr; } }
+    .contact-form input, .contact-form textarea{
+      width:100%; background:#0e1530; border:1px solid #263154; color:#eaf0ff;
+      padding:.85rem 1rem; border-radius:12px;
+    }
+    .contact-form textarea{ resize:vertical; }
   </style>
 </head>
-<body>
-  <nav>
-    <a href="/index.html">Home</a>
-    <a href="/agentics.html">Agentics Consulting</a>
-    <a href="/nelson.html">NELSON<sup>™</sup></a>
-    <a href="/magic-glove.html">The Magic Glove<sup>™</sup></a>
-  </nav>
 
-  <header>
-    <h1>Contact Novawerke AI</h1>
-    <p>Have a question, idea, or opportunity? Please fill out the form below and we'll get back to you promptly.</p>
+<body class="contact">
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <img src="img/Novawerke AI Logo.png" alt="Novawerke AI Logo" />
+      </a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="AIGTI.html">Government Consulting</a>
+        <a href="magic-glove.html">Magic Glove™</a>
+        <a href="nelson.html">NELSON™</a>
+        <a class="active" href="contact.html">Contact</a>
+      </nav>
+    </div>
   </header>
-<!--original "https://formspree.io/f/your-form-id"-->
-  <form action="https://formspree.io/f/mrbypgrq" method="POST">
-    <label for="name">Your Name</label>
-    <input type="text" id="name" name="name" required />
 
-    <label for="email">Your Email</label>
-    <input type="email" id="email" name="_replyto" required />
+  <main class="contact">
+    <!-- Hero (uses global .hero styles) -->
+    <section class="hero">
+      <div class="wrap">
+        <h1>Contact Novawerke AI</h1>
+        <p class="lede">Questions, partnerships, or early testing? Send us a note — we’ll reply promptly.</p>
+      </div>
+    </section>
 
-    <label for="message">Your Message</label>
-    <textarea id="message" name="message" rows="6" required></textarea>
+    <!-- Contact form panel -->
+    <section id="contact" class="panel contact-form">
+      <div class="container">
+        <h2>Send a Message</h2>
+        <form id="contactForm" action="https://formspree.io/f/mrbypgrq" method="POST">
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="name">Your Name</label>
+              <input id="name" name="name" type="text" required placeholder="Jane Smith" />
+            </div>
+            <div class="form-field">
+              <label for="email">Your Email</label>
+              <input id="email" name="_replyto" type="email" required placeholder="jane@email.com" />
+            </div>
+            <div class="form-field wide">
+              <label for="subject">Subject</label>
+              <input id="subject" name="subject" type="text" placeholder="Partnership / Testing / Question" />
+            </div>
+            <div class="form-field wide">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" required placeholder="Tell us a bit about your inquiry…"></textarea>
+            </div>
+          </div>
 
-    <button type="submit">Send Message</button>
-  </form>
+          <div class="cta-row" style="justify-content:flex-start">
+            <button class="btn btn-primary" type="submit">Send Message</button>
+          </div>
 
-  <footer>
-    © 2025 Novawerke AI. All rights reserved. | office@novawerke.ai
+          <p class="tiny" style="opacity:.85; margin-top:.75rem;">
+            Or email us directly: <a href="mailto:office@novawerke.ai">office@novawerke.ai</a>
+            <button type="button" class="btn secondary" onclick="
+            navigator.clipboard.writeText('office@novawerke.ai').then(()=>alert('Email address copied.'));
+            " style="margin-left:.5rem;">Copy address</button>
+          </p>
+
+          <p class="tiny" style="opacity:.85; margin-top:.75rem;">
+            We’ll never share your information. You’ll receive a confirmation email when this form is submitted.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="y"></span> Novawerke AI. All rights reserved. | <a href="mailto:office@novawerke.ai">office@novawerke.ai</a></p>
+    </div>
   </footer>
+
+  <script>
+    // Year stamp
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+  (function () {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const fd = new FormData(form);
+      const name    = (fd.get('name')    || '').trim();
+      const email   = (fd.get('_replyto')|| fd.get('email') || '').trim();
+      const subject = (fd.get('subject') || '').trim() || 'Website contact';
+      const message = (fd.get('message') || '').trim();
+
+      const body =
+        `Name: ${name}\n` +
+        `Email: ${email}\n\n` +
+        `Message:\n${message}\n`;
+
+      const mailto = `mailto:office@novawerke.ai`
+        + `?subject=${encodeURIComponent(subject)}`
+        + `&body=${encodeURIComponent(body)}`;
+
+      // Open user's email client with the message ready to send
+      window.location.href = mailto;
+
+      // Optional: show a gentle notice that an email window should open
+      alert("Your email app should open now with the message pre-filled. If it doesn't, please email office@novawerke.ai directly.");
+    });
+  })();
+</script>
+
 </body>
 </html>
+
