@@ -82,8 +82,7 @@
     }
   </style>
 
-  <!-- PayPal JS SDK (replace YOUR_LIVE_CLIENT_ID) -->
-  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_LIVE_CLIENT_ID&currency=USD&components=buttons"></script>
+
 </head>
 
 <body class="magic-glove">
@@ -157,53 +156,50 @@
       </div>
     </section>
 
-    <!-- Christmas Gift Pre-Order (PayPal checkout, no big form) -->
-    <section id="preorder" class="panel">
-      <div class="container">
-        <span class="xmas-badge">Christmas Gift Pre-Order</span>
-        <h2>Gift a Magic Glove™ — Print the Card Today 🎄</h2>
-        <p class="xmas-sub">
-          You’re purchasing the <strong>Christmas Gift Card pre-order</strong> for the Magic Glove™ at
-          <strong>$99 (Founding Member price)</strong>. We’ll mail a Christmas card using the shipping address you provide at checkout.
-          Hardware ships estimated <strong>Feb–Mar 2026</strong>.
-        </p>
+<!-- Christmas Gift Pre-Order (Stripe checkout) -->
+<section id="preorder" class="panel">
+  <div class="container">
+    <span class="xmas-badge">Christmas Gift Pre-Order</span>
+    <h2>Gift a Magic Glove™ — Reserve Your Spot Today 🎄🐐</h2>
+    <p class="xmas-sub">
+      You're reserving a <strong>Founding Member spot</strong> for The Magic Glove™ at
+      <strong>$99</strong> (includes lifetime AI coaching - normally $99/year).
+      Hardware ships <strong>Spring 2026</strong>. Gift certificate delivered immediately via email.
+    </p>
 
-        <!-- Optional small gift message (no address form) -->
-        <div class="gift-message">
-          <label for="gift_message"><strong>Include a Christmas message</strong></label>
-          <textarea id="gift_message" placeholder="Write a short note to include on the Christmas card…"></textarea>
-        </div>
+    <p class="xmas-sub" style="font-weight: bold; color: #ffeb3b;">
+      🐐 BONUS: Every purchase = automatic entry to WIN A REAL GOAT (Dec 26 drawing, $500 cash alternative)
+    </p>
 
-        <!-- PayPal buttons render here -->
-        <div id="paypal-button-container" class="cta-row" style="margin-top: 1rem;"></div>
+    <!-- Stripe checkout button -->
+    <div class="cta-row" style="margin-top: 1.5rem;">
+      <a href="https://buy.stripe.com/14A6oAcZB2r074E24o3VC00" 
+         class="btn btn-primary" 
+         target="_blank"
+         style="display:inline-block; padding:18px 40px; background:#1F4788; color:#fff; text-decoration:none; border-radius:8px; font-weight:bold; font-size:1.15em;">
+        Reserve Your Founding Member Spot - $99 🐐
+      </a>
+    </div>
 
-        <!-- Helper text so people know they can pay by card -->
-        <div class="pay-help">
-          Secure checkout via <strong>PayPal</strong> or any major credit/debit card —
-          <em>no PayPal account required.</em>
-        </div>
+    <!-- Helper text -->
+    <div class="pay-help" style="margin-top: 1rem; text-align: center;">
+      Secure checkout via <strong>Stripe</strong> — accepts all major credit/debit cards.<br>
+      <span class="tiny-note">You'll provide shipping address at checkout for gift certificate mailing.</span>
+    </div>
 
-        <!-- Explicit purchase clarity -->
-        <p class="xmas-purchase-note">
-          This checkout is for the <strong>Christmas Gift Card pre-order ($99)</strong>. The Founding Members offer above explains the perks you get with this purchase.
-        </p>
+    <!-- Explicit purchase clarity -->
+    <p class="xmas-purchase-note" style="margin-top: 1.5rem;">
+      This purchase reserves your <strong>Founding Member spot ($99)</strong> with lifetime AI coaching + automatic goat raffle entry.
+    </p>
 
-        <!-- Gift Card download; auto-clicked after successful payment -->
-        <div class="cta-row" style="margin-top: 1rem;">
-          <a href="assets/Magic-Glove-Gift-Card.pdf" class="btn secondary" id="btnGiftCard" download>Download Gift Card</a>
-        </div>
-
-        <p id="giftThanks" class="tiny-note" style="display:none; margin-top:.5rem;">
-          Thanks! We received your order. Your gift card download should start automatically. We’ll mail your Christmas card using your PayPal shipping address.
-        </p>
-
-        <!-- Notice if no shipping is returned (edge case) -->
-        <div id="shipRequired" class="shipping-required">
-          We need a shipping address to mail your Christmas card. Please ensure you choose or add a shipping address in the PayPal window.
-        </div>
-      </div>
-    </section>
-  </main>
+    <!-- Optional: Direct gift card download link for existing customers -->
+    <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2);">
+      <p style="font-size:0.95em; opacity:0.9; text-align: center;">
+        Already purchased? <a href="assets/Magic-Glove-Gift-Card.pdf" download style="color:#fff; text-decoration:underline; font-weight: bold;">Download your gift certificate here</a>
+      </p>
+    </div>
+  </div>
+</section>
 
   <!-- Footer -->
   <footer class="site-footer">
@@ -229,89 +225,7 @@
       }
     })();
 
-    // PayPal Smart Buttons: force shipping, capture, send to Formspree, auto-download gift card
-    (function () {
-      const giftBtn   = document.getElementById('btnGiftCard');
-      const giftMsgEl = document.getElementById('gift_message');
-      const thanksEl  = document.getElementById('giftThanks');
-      const shipReqEl = document.getElementById('shipRequired');
+     </script>
 
-      if (!window.paypal || !document.getElementById('paypal-button-container')) return;
-
-      paypal.Buttons({
-        style: { layout: 'horizontal', label: 'pay', shape: 'pill' },
-
-        // Create a $99 order and request a shipping address every time
-        createOrder: function(data, actions) {
-          return actions.order.create({
-            purchase_units: [{
-              custom_id: 'XMAS_PREORDER_2025',
-              description: 'Christmas Gift Pre-Order — Magic Glove™ (Founding Member $99)',
-              amount: { value: '99.00', currency_code: 'USD' },
-              category: 'PHYSICAL_GOODS'
-            }],
-            application_context: {
-              shipping_preference: 'GET_FROM_FILE' // prompt/require a shipping address
-            }
-          });
-        },
-
-        // Capture payment, collect shipping + payer details, send to Formspree, then download gift card
-        onApprove: function(data, actions) {
-          return actions.order.capture().then(async function(order) {
-            try {
-              const pu = order?.purchase_units?.[0];
-              const shipping = pu?.shipping;
-              const payer = order?.payer || {};
-
-              // If no shipping returned, block fulfillment and nudge buyer to include one
-              if (!shipping || !shipping.address) {
-                if (shipReqEl) shipReqEl.style.display = 'block';
-                alert('Please include a shipping address in PayPal so we can mail the Christmas card.');
-                return; // do not fulfill without shipping
-              }
-
-              // Prepare payload for your Formspree endpoint
-              const payload = {
-                product_type: 'Christmas Gift Pre-Order',
-                price: '99.00',
-                order_id: order?.id || '',
-                custom_id: pu?.custom_id || '',
-                payer_email: payer?.email_address || '',
-                payer_name: [payer?.name?.given_name, payer?.name?.surname].filter(Boolean).join(' '),
-                ship_name: shipping?.name?.full_name || '',
-                ship_addr1: shipping?.address?.address_line_1 || '',
-                ship_addr2: shipping?.address?.address_line_2 || '',
-                ship_city:  shipping?.address?.admin_area_2 || '',
-                ship_state: shipping?.address?.admin_area_1 || '',
-                ship_zip:   shipping?.address?.postal_code   || '',
-                ship_country: shipping?.address?.country_code || '',
-                gift_message: (giftMsgEl?.value || '')
-              };
-
-              // Send to Formspree silently
-              await fetch('https://formspree.io/f/mrbypgrq', {
-                method: 'POST',
-                headers: { 'Accept': 'application/json' },
-                body: new URLSearchParams(payload)
-              });
-
-              // Show confirmation and trigger gift card download
-              if (thanksEl) thanksEl.style.display = 'block';
-              if (giftBtn)  giftBtn.click();
-            } catch (e) {
-              console.error(e);
-              alert('Payment captured, but we could not record your details automatically. We will contact you to confirm the mailing address.');
-            }
-          });
-        },
-
-        onError: function(err) {
-          console.error(err);
-          alert('Payment error. Please try again or contact us.');
-        }
-      }).render('#paypal-button-container');
-    })();
-  </script>
 </body>
 </html>
