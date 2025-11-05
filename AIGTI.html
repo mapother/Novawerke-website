@@ -83,6 +83,54 @@
     }
   </style>
 </style>
+
+<style>
+  /* Contact form: black text for white background, beautiful modern look */
+  #contact input, #contact textarea {
+    color: #111 !important;
+    background: #f8fafc;
+    border: 1.5px solid #d3dbe6;
+    border-radius: 10px;
+    padding: 0.95rem 1.1rem;
+    font-size: 1.08rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 6px rgba(60,80,120,0.04);
+    margin-top: 0.18em;
+  }
+  #contact input:focus, #contact textarea:focus {
+    border-color: #7cb0ff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(124,176,255,0.13);
+    background: #fff;
+  }
+  #contact input::placeholder, #contact textarea::placeholder {
+    color: rgba(120,130,150,0.38) !important;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+  #contact label {
+    color: #222 !important;
+    font-weight: 600;
+    font-size: 1.01rem;
+    margin-bottom: 0.18em;
+    letter-spacing: 0.01em;
+  }
+  #contact .card {
+    background: #fff;
+    color: #111;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    margin-bottom: 12px;
+    padding: 1.1em 1em 0.7em 1em;
+  }
+  #contact .grid.cols-3 {
+    gap: 18px;
+  }
+  #contact .cta-row {
+    margin-top: 1.2em;
+  }
+</style>
 </head>
 
 <body>
@@ -244,14 +292,14 @@
         <h2>REQUEST A BRIEFING</h2>
         <p>We’d welcome the opportunity to brief federal stakeholders and coordinate an AIGTI pilot. Just fill out the questionnaire below, tell us about your project and/or goals, and then click “REQUEST A BRIEFING.”</p>
 
-        <form name="contact" method="post" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you">
-          <input type="hidden" name="form-name" value="contact" />
+        <form name="contact" method="POST" action="https://formspree.io/f/mnnokzzl">
+          <input type="hidden" name="_next" value="/thank-you.html" />
           <p class="hidden"><label>Don’t fill this out if you’re human: <input name="bot-field" /></label></p>
 
           <div class="grid cols-3">
             <label class="card">Full name<br/><input name="name" required placeholder="Your name" /></label>
             <label class="card">Email<br/><input name="email" type="email" required placeholder="Your email, e.g, you@example.com" /></label>
-            <label class="card">Organization<br/><input name="org" placeholder="Your Agency or Group" /></label>
+            <label class="card">Organization<br/><input name="company" placeholder="Your Agency or Group" /></label>
           </div>
 
           <label class="card" style="display:block;margin-top:16px">Message<br/>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thank You | Novawerke AI</title>
+  <link rel="stylesheet" href="styles.css?v=2">
+  <style>
+    .thankyou-bg {
+      background: rgba(40, 60, 90, 0.72);
+      border-radius: 18px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.13);
+      padding: 2.5rem 2rem;
+      max-width: 520px;
+      margin: 8vh auto 0 auto;
+      text-align: center;
+      border: 1.5px solid rgba(255,255,255,0.13);
+    }
+    .thankyou-bg h1 {
+      color: #eaf3ff;
+      font-size: 2.1rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+      font-weight: 800;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    }
+    .thankyou-bg p {
+      color: #b7d6ff;
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.18);
+    }
+    .thankyou-bg .btn {
+      background: #1a2340;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.8em 2em;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    }
+    .thankyou-bg .btn:hover {
+      background: #2b3a5a;
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <img src="img/Novawerke AI Logo.png" alt="Novawerke AI Logo" />
+      </a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="AIGTI.html">Gov AI Consulting</a>
+        <a href="magic-glove.html">Magic Glove™</a>
+        <a href="nelson.html">NELSON™</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="thankyou-bg">
+      <div style="font-size:3.2rem; margin-bottom:0.5rem; color:#7ecbff;">&#10003;</div>
+      <h1>Thank You!</h1>
+      <p>Your message has been received.<br>We appreciate your interest in the <strong>AIGTI Mission-Readiness Program</strong>.<br>Our team will respond as soon as possible.</p>
+      <a href="index.html" class="btn">Return to Home</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="tiny">© <span id="y"></span> Novawerke AI. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
