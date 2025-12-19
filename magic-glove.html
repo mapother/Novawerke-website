@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Novawerke AI – The Magic Glove™</title>
+  <meta name="description" content="The Magic Glove™ is temporarily unavailable while we improve the product and fulfillment process.">
+<link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+
+  <!-- Page-scoped styles to guarantee legibility and Xmas clarity -->
+  <style>
+    /* Keep the invitation text white in the left card */
+    .tmg-hero .offer-inline,
+    .tmg-hero .offer-inline * { color: #fff !important; }
+    .tmg-hero .offer-inline strong { color: inherit !important; font-weight: 700; }
+    .offer-inline .offer-list { margin: 0.75rem 0 0; padding-left: 1.1rem; }
+    .offer-inline .offer-list li { margin: .35rem 0; }
+
+    /* Helper styles for the checkout section */
+    .pay-help { margin-top: .5rem; font-size: .95rem; opacity: .95; }
+    .pay-help .nowrap { white-space: nowrap; }
+    .tiny-note { font-size: .85rem; opacity: .9; }
+
+    /* Optional small field for gift message (no big form) */
+    .gift-message {
+      margin-top: .75rem;
+      display: flex;
+      gap: .5rem;
+      align-items: flex-start;
+    }
+    .gift-message label { margin-top: .35rem; white-space: nowrap; color:#fff; }
+    .gift-message textarea {
+      width: 100%;
+      min-height: 70px;
+      resize: vertical;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: .5rem .65rem;
+      background: rgba(0,0,0,0.25);
+      color: #fff;
+    }
+
+    /* Xmas section readability + branding */
+    #preorder {
+      position: relative;
+      color: #fff;
+    }
+    #preorder::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45); /* subtle darken for legibility */
+      z-index: 0;
+      border-radius: 20px; /* match panel rounding */
+    }
+    #preorder > .container { position: relative; z-index: 1; }
+
+    .xmas-badge {
+      display: inline-block;
+      background: #c1121f;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      padding: .25rem .5rem;
+      border-radius: 8px;
+      margin-bottom: .5rem;
+    }
+    .xmas-sub { margin: .25rem 0 1rem 0; opacity: .95; color:#fff; }
+    .xmas-purchase-note { margin-top: .5rem; font-size: .95rem; opacity: .95; color:#fff; }
+
+    /* A lightweight “blocking” notice if no shipping comes back */
+    .shipping-required {
+      display: none;
+      margin-top: .75rem;
+      color: #ffb0b0;
+      background: rgba(220,0,0,0.15);
+      border: 1px solid rgba(220,0,0,0.35);
+      padding: .5rem .75rem;
+      border-radius: 8px;
+    }
+
+    /* Ordering paused notice */
+    .order-paused {
+      margin-top: 1rem;
+      padding: .85rem .95rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(0,0,0,0.28);
+      color: #fff;
+    }
+    .order-paused strong { font-weight: 800; }
+    .order-paused a { color: #fff; text-decoration: underline; }
+    .btn[disabled], button[disabled] {
+      opacity: .55;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+  </style>
+</head>
+
+<body class="magic-glove" id="top">
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <img src="img/Novawerke AI Logo.png" alt="Novawerke AI Logo" style="height:48px;width:auto;">
+      </a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="AIGTI.html">Government Consulting</a>
+        <a href="magic-glove.html" class="active">Magic Glove™</a>
+        <a href="nelson.html">NELSON™</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Headline Above Glove Card -->
+  <section class="headline-panel">
+    <div class="container">
+      <h1 class="goat-headline">
+        Stop Practicing.<br>
+        Start Training to Become the <span class="highlight">GOAT</span> Golfer.
+      </h1>
+    </div>
+  </section>
+
+  <main>
+    <!-- Primary Section with Glove + Golf Pro Background -->
+    <section class="tmg-hero">
+      <div class="container">
+        <div class="tmg-feature">
+          <div class="tmg-copy">
+            <h1>The Magic Glove™ — An AI Tool Built for Feel, Designed for Feedback</h1>
+            <p>
+              A performance glove that captures grip dynamics in real time using "AI" — pressure, timing, and consistency — so golfers can train smarter and coaches can quantify progress.
+              Designed for practice and play, with edge-AI analysis that keeps latency near zero.
+            </p>
+            <p>
+              Early testers get private updates and priority access. Golf is just the beginning — our artificial intelligence architecture
+              extends to rehabilitation and high-performance training across sports.
+            </p>
+
+            <!-- Inline Founding Members invitation -->
+            <div class="offer-inline">
+              <h2>An Invitation to the Founding Members Club</h2>
+              <div class="order-paused">
+                <strong>Magic Glove is temporarily unavailable.</strong><br>
+                We’re taking a short pause to improve the product and fulfillment process. <strong>Ordering is currently closed.</strong><br>
+                If you already placed an order, we’ll contact you directly with next steps.
+              </div>
+
+              <p>
+                We are inviting the <strong>first 100</strong> serious golfers to help us shape the future of golf training.
+                As a Founding Member, you are not just a customer; you are a partner. Join the first 100 testers and receive early access.
+              </p>
+              <p style="font-size: 1.8em;">
+                Get the <strong>Magic Glove™</strong> for just <strong>$99</strong>!
+              </p>
+              <ul class="offer-list">
+                <li>Receive the <strong>AI Coaching</strong> subscription <strong>free for life</strong>.</li>
+                <li>Get early access to new features and private builds.</li>
+                <li>Have a real voice in the product’s evolution with direct feedback sessions.</li>
+              </ul>
+
+              <!-- Keep button at the end of the text -->
+              <div class="cta-row">
+                <button class="btn btn-primary" disabled aria-disabled="true">Ordering paused</button>
+                <a class="btn secondary" href="contact.html">Contact us</a>
+              </div>
+            </div>
+          </div>
+
+          <img src="img/tmg-photo.png" alt="The Magic Glove product photo" class="tmg-image" />
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- Ordering Paused (replaces checkout) -->
+    <section id="preorder" class="panel">
+      <div class="container">
+        <span class="xmas-badge">Ordering Paused</span>
+        <h2>Magic Glove™ Orders Are Temporarily Closed</h2>
+        <p class="xmas-sub">
+          We’re taking a short pause to improve the product and fulfillment process. <strong>We are not accepting new orders at this time.</strong>
+        </p>
+        <p class="xmas-purchase-note">
+          If you previously placed an order, we’ll reach out directly. For general questions, please use our contact page.
+        </p>
+        <div class="cta-row" style="margin-top: 1rem;">
+          <a href="contact.html" class="btn btn-primary">Contact us</a>
+          <a href="#top" class="btn secondary" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Back to top</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="y"></span> Novawerke AI | All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Set year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
