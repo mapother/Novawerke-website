@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Teaming — Novawerke AI</title>
+  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1929;
+    --navy-mid: #122338;
+    --navy-light: #1B3553;
+    --steel: #2E6DA4;
+    --steel-light: #4A8FC4;
+    --ice: #A8C8E8;
+    --gold: #C8A84B;
+    --gold-light: #E0C870;
+    --white: #F4F6F8;
+    --ghost: rgba(168,200,232,0.08);
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'Crimson Pro', Georgia, serif;
+    --font-mono: 'Share Tech Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    height: 72px;
+    background: rgba(11,25,41,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(168,200,232,0.12);
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none;
+  }
+
+  .nav-logo img {
+    height: 48px; width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.92;
+  }
+
+  .nav-wordmark {
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .nav-links {
+    display: flex; gap: 40px; list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ice);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active { opacity: 1; color: var(--gold); }
+
+  /* ── SECTIONS ── */
+  section { padding: 120px 0; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 8vw, 96px);
+    line-height: 0.95;
+    letter-spacing: 4px;
+    color: var(--white);
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 48px);
+    letter-spacing: 3px;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  p { color: var(--ice); margin-bottom: 20px; }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--steel-light);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .gold { color: var(--gold); }
+  .steel { color: var(--steel-light); }
+
+  /* ── DIVIDER ── */
+  .rule {
+    width: 60px; height: 2px;
+    background: var(--gold);
+    margin: 24px 0;
+  }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px 36px;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    border: 2px solid var(--gold);
+  }
+
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--gold);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--ice);
+    border: 1px solid rgba(168,200,232,0.3);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--ghost);
+    border: 1px solid rgba(168,200,232,0.1);
+    border-left: 3px solid var(--gold);
+    padding: 36px;
+    margin-bottom: 24px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .card:hover {
+    background: rgba(168,200,232,0.06);
+    border-left-color: var(--steel-light);
+  }
+
+  /* ── GRID ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-mid);
+    border-top: 1px solid rgba(168,200,232,0.1);
+    padding: 48px;
+    text-align: center;
+  }
+
+  footer p {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(168,200,232,0.4);
+    margin: 0;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scanline {
+    0%   { top: -10%; }
+    100% { top: 110%; }
+  }
+
+  .fade-up { animation: fadeUp 0.8s ease forwards; }
+  .delay-1 { animation-delay: 0.15s; opacity: 0; }
+  .delay-2 { animation-delay: 0.3s;  opacity: 0; }
+  .delay-3 { animation-delay: 0.45s; opacity: 0; }
+  .delay-4 { animation-delay: 0.6s;  opacity: 0; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .container { padding: 0 24px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+
+  <style>
+    .page-hero {
+      padding: 160px 0 80px;
+      background: radial-gradient(ellipse 60% 60% at 60% 40%, rgba(46,109,164,0.15) 0%, transparent 70%), var(--navy);
+      border-bottom: 1px solid rgba(168,200,232,0.1);
+    }
+
+    .partner-type {
+      background: var(--ghost);
+      border: 1px solid rgba(168,200,232,0.1);
+      border-top: 3px solid var(--steel);
+      padding: 40px;
+      transition: border-top-color 0.2s, background 0.2s;
+    }
+
+    .partner-type:hover {
+      border-top-color: var(--gold);
+      background: rgba(168,200,232,0.06);
+    }
+
+    .contact-block {
+      background: var(--navy-mid);
+      border: 1px solid rgba(168,200,232,0.12);
+      border-left: 4px solid var(--gold);
+      padding: 48px;
+      margin-top: 48px;
+    }
+
+    .contact-item {
+      display: flex; align-items: center; gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(168,200,232,0.08);
+    }
+
+    .contact-item:last-child { border-bottom: none; }
+
+    .contact-icon {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--gold);
+      width: 80px;
+      flex-shrink: 0;
+    }
+
+    .contact-val {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--ice);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    .contact-val:hover { color: var(--gold); }
+
+    .criteria-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3px;
+      margin-top: 32px;
+      background: rgba(168,200,232,0.06);
+      border: 1px solid rgba(168,200,232,0.1);
+    }
+
+    .criteria-item {
+      background: var(--navy);
+      padding: 20px 24px;
+      font-size: 16px;
+      color: var(--ice);
+      display: flex; align-items: center; gap: 12px;
+    }
+
+    .criteria-item::before {
+      content: '→';
+      color: var(--gold);
+      font-family: var(--font-mono);
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="Novawerke AI">
+    <span class="nav-wordmark">NOVAWERKE AI</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" >Home</a></li>
+    <li><a href="technology.html" >Technology</a></li>
+    <li><a href="about.html" >About</a></li>
+    <li><a href="contact.html" class='active'>Teaming</a></li>
+  </ul>
+</nav>
+
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="label fade-up">Partnership & Teaming</span>
+      <h1 class="fade-up delay-1">LET'S<br><span class="gold">TEAM UP</span></h1>
+      <div class="rule fade-up delay-2"></div>
+      <p class="fade-up delay-3" style="max-width:620px; font-size:20px;">
+        Novawerke provides the cognition layer. You provide the platform. Together we meet DDIL requirements that neither party can satisfy alone.
+      </p>
+    </div>
+  </div>
+
+  <!-- WHO WE'RE LOOKING FOR -->
+  <section>
+    <div class="container">
+      <span class="label">Ideal Partners</span>
+      <h2>WHO WE'RE<br>LOOKING TO WORK WITH</h2>
+      <div class="rule"></div>
+
+      <div class="grid-3" style="margin-top:40px; gap:24px;">
+        <div class="partner-type">
+          <h3>PLATFORM INTEGRATORS</h3>
+          <p>Defense technology companies building autonomous maritime vessels, UGVs, UAVs, or logistics systems with active DDIL operational requirements they cannot currently satisfy.</p>
+        </div>
+        <div class="partner-type">
+          <h3>DEFENSE INVESTORS</h3>
+          <p>In-Q-Tel, DIU, AFWERX, and angel/VC investors who understand why cloud-dependent AI is a strategic liability and are positioned to support early-stage defense AI architecture companies.</p>
+        </div>
+        <div class="partner-type">
+          <h3>PROGRAM PARTNERS</h3>
+          <p>Prime and mid-tier contractors pursuing DoD autonomous systems programs — ALPV, RCV, UGV, autonomous logistics — who need a credible, MOSA-compliant autonomy stack for their bid.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:56px;">
+        <span class="label">Our Ideal Partner Profile</span>
+        <div class="criteria-grid">
+          <div class="criteria-item">Active autonomous platform program</div>
+          <div class="criteria-item">Named DDIL requirement in solicitation</div>
+          <div class="criteria-item">Mid-size or nontraditional defense contractor</div>
+          <div class="criteria-item">Comfortable with OT agreement vehicles</div>
+          <div class="criteria-item">Hardware capability, autonomy gap</div>
+          <div class="criteria-item">DoD or IC customer relationship</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE BRING -->
+  <section style="background: var(--navy-mid); border-top: 1px solid rgba(168,200,232,0.08);">
+    <div class="container">
+      <span class="label">What Novawerke Brings</span>
+      <h2>THE COGNITION LAYER<br>YOUR PLATFORM NEEDS</h2>
+      <div class="grid-2" style="margin-top:40px; gap:32px;">
+        <div class="card">
+          <h3>ZERO CLOUD DEPENDENCY</h3>
+          <p>Full inference capability on SoC-class edge hardware. No network call required for autonomous operation. Designed for the environment, not the data center.</p>
+        </div>
+        <div class="card">
+          <h3>MOSA-COMPLIANT INTEGRATION</h3>
+          <p>Open architecture core designed for clean integration into existing platform systems. Helps you meet your own contractual MOSA requirements without redesigning your hardware.</p>
+        </div>
+        <div class="card">
+          <h3>PLATFORM AGNOSTIC</h3>
+          <p>The architecture does not care whether the platform floats, flies, rolls, or walks. Same cognition layer. Same DDIL performance. Different domain Spoke configurations.</p>
+        </div>
+        <div class="card">
+          <h3>AIRLOCKED SECURITY</h3>
+          <p>Star topology with strict capability isolation. No inter-Spoke communication. Security enforced by architecture, not policy — critical for contested environment deployment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section>
+    <div class="container" style="max-width:760px;">
+      <span class="label">Get In Touch</span>
+      <h2>START THE<br>CONVERSATION</h2>
+      <div class="rule"></div>
+      <p style="font-size:20px; margin-bottom:0;">
+        We respond to serious teaming inquiries, investment conversations, and program partnership discussions. Lead with your platform, your program, and your DDIL requirement.
+      </p>
+
+      <div class="contact-block">
+        <div class="contact-item">
+          <span class="contact-icon">FOUNDER</span>
+          <span class="contact-val">Sean Kerr — CEO & Co-Founder</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">COMPANY</span>
+          <span class="contact-val">Novawerke AI LLC · Virginia, USA</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">LINKEDIN</span>
+          <a href="https://www.linkedin.com/in/sean-kerr-432b8a308/" target="_blank" class="contact-val">linkedin.com/in/sean-kerr-432b8a308</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">WEB</span>
+          <a href="https://www.novawerke.ai" class="contact-val">novawerke.ai</a>
+        </div>
+      </div>
+
+      <p style="margin-top:40px; font-style:italic; font-size:16px; color:rgba(168,200,232,0.55); text-align:center;">
+        Novawerke AI is a Virginia-based defense technology startup. OT agreement eligible per 10 USC 4022.
+      </p>
+    </div>
+  </section>
+
+  
+<footer>
+  <p>© 2026 NOVAWERKE AI LLC &nbsp;·&nbsp; VIRGINIA, USA &nbsp;·&nbsp; DEFENSE TECHNOLOGY &nbsp;·&nbsp; EDGE-NATIVE AI</p>
+</footer>
+
+</body>
+</html>
