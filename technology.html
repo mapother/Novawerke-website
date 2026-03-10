@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Technology — Novawerke AI</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="img/logo.png" alt="Novawerke AI">
+      <span class="nav-wordmark">NOVAWERKE AI</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="technology.html" class="active">Technology</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Teaming</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero" style="background: radial-gradient(ellipse 60% 60% at 80% 40%, rgba(46,109,164,0.18) 0%, transparent 70%), var(--navy);">
+    <div class="container">
+      <span class="label fade-up">Architecture Overview</span>
+      <h1 class="fade-up delay-1">THE<br><span class="gold">ARCHITECTURE</span></h1>
+      <div class="rule fade-up delay-2"></div>
+      <p class="fade-up delay-3" style="max-width:620px; font-size:20px;">
+        A hub-and-spoke hierarchical reasoning system engineered from the ground up for edge-native inference — no cloud, no GPS dependency, no comms requirement.
+      </p>
+    </div>
+  </div>
+
+  <!-- TOPOLOGY -->
+  <section>
+    <div class="container">
+      <span class="label">System Topology</span>
+      <h2>HUB-AND-SPOKE<br>HIERARCHICAL REASONING</h2>
+      <p style="max-width:680px;">The central Hub orchestrates all reasoning and coordination. Spoke agents handle specialized, domain-specific inference. No Spoke communicates with another — all intelligence flows through the Hub, ensuring security isolation and coordinated autonomy.</p>
+
+      <div class="arch-diagram">
+        <div class="hub-node">
+          <div class="hub-label">HUB · HRM</div>
+          <div class="hub-sub">27M PARAM · DUAL-PROCESS · EDGE-NATIVE</div>
+        </div>
+        <div class="connector-lines"></div>
+        <div class="spoke-row">
+          <div class="spoke-node"><div class="spoke-name">Vision</div><p class="spoke-desc">Optical / IR perception</p></div>
+          <div class="spoke-node"><div class="spoke-name">Navigation</div><p class="spoke-desc">Passive PNT, inertial</p></div>
+          <div class="spoke-node"><div class="spoke-name">Threat</div><p class="spoke-desc">Hazard classification</p></div>
+          <div class="spoke-node"><div class="spoke-name">Comms</div><p class="spoke-desc">Multi-mode radio mgmt</p></div>
+          <div class="spoke-node"><div class="spoke-name">Mission</div><p class="spoke-desc">Task & waypoint logic</p></div>
+        </div>
+      </div>
+
+      <div style="margin-top: 80px;">
+        <span class="label">Inside the Hub</span>
+        <h2>DUAL-PROCESS<br>COGNITIVE ARCHITECTURE</h2>
+        <div class="grid-2" style="gap:24px; margin-top:32px;">
+          <div class="card">
+            <h3>L-MODULE — FAST PATH</h3>
+            <p>~15M parameter causal Transformer decoder. Handles rapid, reactive processing — continuous sensory input, immediate hazard response, real-time state updates. Converges to local equilibrium within milliseconds.</p>
+          </div>
+          <div class="card">
+            <h3>H-MODULE — SLOW PATH</h3>
+            <p>~12M parameter encoder-decoder. Performs abstract, deliberative planning — mission logic, route optimization, multi-step reasoning. Updates only after the L-module completes a full cycle, providing strategic context.</p>
+          </div>
+        </div>
+        <p style="margin-top:24px; font-style:italic; color: var(--ice); opacity:0.7;">
+          Inspired by dual-process cognitive theory. The same architecture your brain uses to drive a familiar road while planning tomorrow's mission — reactive and deliberate, simultaneously.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAINING -->
+  <section style="background: var(--navy-mid); border-top: 1px solid rgba(168,200,232,0.08);">
+    <div class="container">
+      <span class="label">Training Methodology</span>
+      <h2>TWO-PHASE<br>LEARNING PIPELINE</h2>
+
+      <div class="phase-block">
+        <div class="phase-num">01</div>
+        <div>
+          <h3>KNOWLEDGE DISTILLATION</h3>
+          <p>The Hub is bootstrapped from a large teacher model using a unified Knowledge Distillation and Reinforcement Learning (KDRL) framework. Temperature-scaled KL divergence provides a rich training signal — teaching not just correct answers but the reasoning relationships between possible outputs.</p>
+          <p>A bidirectional distillation cycle follows: as the Hub discovers novel high-reward reasoning paths through operational experience, those discoveries refine the original teacher — creating a co-evolving system where both models improve iteratively.</p>
+        </div>
+      </div>
+
+      <div class="phase-block" style="border-bottom:none;">
+        <div class="phase-num">02</div>
+        <div>
+          <h3>MA-GFLOWNET REINFORCEMENT LEARNING</h3>
+          <p>Multi-Agent Generative Flow Networks (MA-GFlowNets) enable the Hub and Spokes to learn collaboratively using the Centralized Training with Decentralized Execution (CTDE) paradigm. Unlike traditional RL that seeks a single optimal policy, GFlowNets sample diverse high-reward solutions — critical for contested environments where multiple valid approaches must be available.</p>
+          <p>Monte Carlo Tree Search (MCTS) with PUCT-based selection guides exploration, dramatically improving sample efficiency. Dynamic reward shaping via Bayesian Active Learning by Disagreement (BALD) ensures the system continuously focuses training on the most uncertain, highest-value regions of the solution space.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOSA -->
+  <section>
+    <div class="container">
+      <span class="label">Integration & Compliance</span>
+      <h2>PLATFORM-AGNOSTIC<br>BY DESIGN</h2>
+      <p style="max-width:680px;">Novawerke's architecture integrates into existing platform systems without requiring hardware redesign. The open-source core is structurally aligned with DoD Modular Open Systems Approach (MOSA) policy.</p>
+      <div class="mosa-box">
+        <div class="grid-3" style="gap:40px;">
+          <div>
+            <h3>MOSA COMPLIANT</h3>
+            <p style="font-size:16px;">Hub-and-spoke open architecture meets DoD MOSA requirements. Integration does not create vendor lock-in — it helps partners meet their own contractual obligations.</p>
+          </div>
+          <div>
+            <h3>LOW-SWAP NATIVE</h3>
+            <p style="font-size:16px;">Designed for SoC-class edge hardware. Full inference capability on size, weight, and power-constrained platforms — maritime vessels, UGVs, UAVs, logistics systems.</p>
+          </div>
+          <div>
+            <h3>AIRLOCKED SECURITY</h3>
+            <p style="font-size:16px;">Star topology enforces strict capability isolation. No inter-Spoke communication. All coordination mediated by the Hub. Architecturally prevents lateral movement attacks.</p>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:60px; text-align:center;">
+        <a href="contact.html" class="btn btn-primary">Discuss Integration</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 NOVAWERKE AI LLC &nbsp;·&nbsp; VIRGINIA, USA &nbsp;·&nbsp; DEFENSE TECHNOLOGY &nbsp;·&nbsp; EDGE-NATIVE AI</p>
+  </footer>
+
+</body>
+</html>
